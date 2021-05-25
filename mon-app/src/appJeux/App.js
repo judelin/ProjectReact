@@ -23,7 +23,7 @@ function App(){
 		
 		<div>
 		<div className="wrap">
-		<h1 > Jeu Tic tac toe</h1>
+		<h1 >Jeux</h1>
 		</div>
      <div className="wrap">
         
