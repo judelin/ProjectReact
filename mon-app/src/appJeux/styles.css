@@ -1,0 +1,55 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.wrapper {
+  display:flex;
+  flex-wrap:wrap;
+  margin-left:70px;
+  
+}
+.divElem {
+  padding: 1px;
+  background-clip: content-box;
+  background-repeat: no-repeat;
+  text-align:center;
+  
+}
+.row1 {
+  display: flex;
+}
+
+.column {
+  padding: 1px;
+  float: left;
+  width: auto;
+}
+.column1 {
+  padding: 1px;
+
+
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.wrap{
+
+   display: flex;
+   padding-right: 30%;
+   padding-left: 30%;
+   flex-wrap:wrap;
+  justify-content: center;
+}
+
+.wrap1{
+
+   display: flex;
+   flex-wrap:wrap;
+   margin: 10px;
+  justify-content: center;
+}
+
+.isW{justify-content: center;}

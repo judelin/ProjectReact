@@ -1,0 +1,60 @@
+.carre{
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 34px;
+  font-weight: bold;
+  line-height: 54px;
+  height: 54px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 54px;
+}
+
+.carre:focus {
+  outline: none;
+}
+
+.wrap{
+	margin: 30px;
+	 display: flex;
+  justify-content: center;
+}
+
+.column {
+  float: left;
+  width: auto;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.row1 {
+  display: flex;
+}
+
+.column1 {
+  flex: 50%;
+
+}
+.column2 {
+  flex: 30%;
+}
+
+.col{
+	margin: 30px;
+}
+
+
+#wrapper {
+  display:flex;
+  flex-wrap:wrap;
+  margin-left:70px;
+  
+}

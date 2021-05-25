@@ -1,0 +1,48 @@
+.echec{
+	background-color:gray;
+	height: 40px;
+	width: 40px;
+	
+
+}
+.echec1{
+	background-color:black;
+	height: 40px;
+	width: 40px;
+
+
+
+}
+
+.wrap{
+	margin: 30px;
+	 display: flex;
+	 padding-left: 30%;
+	 padding-right: 30%;
+	    flex-wrap:wrap;
+  justify-content: center;
+}
+
+.column {
+  float: left;
+  width: auto;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.row1 {
+  display: flex;
+}
+
+.emo{
+	 justify-content: center;
+	 
+}
+[src=''] {
+    visibility: hidden;
+}

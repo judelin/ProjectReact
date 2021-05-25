@@ -1,0 +1,30 @@
+.cart{
+height:90px;
+width:90px;
+margin: 1px;
+	
+}
+[src=''] {
+    visibility: hidden;
+}
+.row1 {
+  display: flex;
+}
+
+.wrap{
+	margin: 30px;
+	 display: flex;
+	 padding-left: 30%;
+	 padding-right: 30%;
+	    flex-wrap:wrap;
+  justify-content: center;
+}
+.im{
+	margin: 1px;
+}
+.cent{
+	
+		 padding-left: 44%;
+	 padding-right: 30%;
+
+}
