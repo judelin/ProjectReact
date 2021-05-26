@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container} from 'react-bootstrap';
 
 function melange(tab){
     var a=0;
@@ -47,9 +48,9 @@ function Braa(props){
   
   return(
 
-     <div className="wrap">
+     <Container className="wrap">
        {ligne}
-        </div>
+        </Container>
     );//
 }
 

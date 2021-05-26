@@ -64,18 +64,17 @@ export default function BasicExample() {
 
 function Taquin() {
     return (
-        <Container>
-            <Row>
+        <div>
+           
                 <h1 >Jeux Taquin</h1>
-            </Row>
-            <Row>
+            
 
                 <AppQ />
 
 
-            </Row>
+           
 
-        </Container>
+        </div>
     );
 }
 
@@ -99,15 +98,14 @@ function Echec() {
 function Memoire() {
     return (
         <Container>
-            <Row>
+           
                 <h1 >Jeux Memoire</h1>
-            </Row>
-            <Row>
+           
 
                 <AppM />
 
 
-            </Row>
+            
 
         </Container>
     );

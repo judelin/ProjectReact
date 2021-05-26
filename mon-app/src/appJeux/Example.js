@@ -1,4 +1,5 @@
 import React,{useCallback} from 'react';
+import { Row, Col, Button, Container, Form} from 'react-bootstrap';
 import './styles.css';
 
 import Affic from "./component/affic";
@@ -430,72 +431,97 @@ const shuffleArray = arr => arr.sort(() => Math.random() - 0.5);
     const isWin=isRes?<div className="wrap"><h4> Felication</h4></div>:<div className="wrap"><h4> Joueur</h4></div>;
 //
   return (
-    <div>
+    <Container>
     <div>
     {isWin}
      {af}
      {br}
   </div>
 
-    <div className="wrap1">
-    <div style={{margin:"10px"}}>
-       <label>
-       Choisir numero: 
-      <input
-        name="numberOfGuests"
+
+
+      <Form>
+      
+    
+      <br/>
+         
+           
+      <Form.Row  md="6" className="justify-content-md-center">
+         
+        <Form.Group as={Col} >
+          <Form.Label>Choisir un numero</Form.Label>
+          <Form.Control
+          placeholder="numero"
+            name="numberOfGuests"
             type="number"
             value={lag}
-            onChange={onChangeLag}
-      />
-      </label>
-      </div>
-     <div style={{margin:"10px"}}>
+            onChange={onChangeLag}/>
+        
+        </Form.Group>
+      
+        </Form.Row>
 
-      <label>
-      Afficher Numero:
-      <input
-
+        <Form.Row md="6" className="justify-content-md-center">
+         <Form.Group as={Col} >
+          <Form.Label>Afficher numero</Form.Label>
+           <Form.Check
+           
       name="AfficherNumero"
-            type="checkbox"
+            label="Aficher numero"
             checked={numeroAfficher}
             onChange={onChangeNumero}
-      />
-     </label>
-    </div>
-    </div>
-    <div className="wrap1">
-    <div style={{margin:"10px"}}>
-       <label>
-       Url Image: 
-      <input
-        name="ImageUrl"
+
+
+            />
+
+          </Form.Group>
+        </Form.Row>
+
+      <Form.Row  md="6" className="justify-content-md-center">
+        <Form.Group as={Col}>
+          <Form.Label>Url image</Form.Label>
+          <Form.Control
+          placeholder="Image"
+             name="ImageUrl"
             type="text"
             value={imag}
-            onChange={onChangeImag}
-      />
-      </label>
-       </div>
-     <div style={{margin:"10px"}}>
-      
-        <label>
-          Choisissez votre couleur favori :
-          <select value={coli} onChange={handleChangeCol}>
-            <option value="gray">Gris</option>
+            onChange={onChangeImag}/>
+         
+        </Form.Group>
+        </Form.Row>
+     
+
+
+
+         <Form.Row  md="6" className="justify-content-md-center">
+        <Form.Group as={Col} >
+          <Form.Label>Statut</Form.Label>
+          <Form.Control
+            as="select"
+            id="idSel"
+            placeholder="Statut"
+            onChange={handleChangeCol}>
+             <option value="Public">Public</option>
+          <option value="gray">Gris</option>
             <option value="red">Rouge</option>
             <option value="blue">Bleu</option>
             <option value="yellow">Jaune</option>
-          </select>
-        </label>
+     </Form.Control>
 
-    </div>
-    </div>
-    <div className="wrap1">
-    <div >
-    <button onClick={affich} style={{margin:"10px"}}>Afficher</button>
-    <button onClick={brass} style={{margin:"10px"}}>Brasser</button>
-    </div>
-    </div>
-</div>
+         
+        </Form.Group>
+
+
+        </Form.Row>
+  
+       <Row md= "6" className="justify-content-md-center">
+    <Button as={Col} variant="secondary" onClick={affich} style={{margin:"10px"}}>Afficher</Button>
+    <Button as={Col} variant="secondary" onClick={brass} style={{margin:"10px"}}>Brasser</Button>
+    </Row>
+  
+     </Form>
+     
+</Container>
 
   );
   //https://www.pieuvre.ca/wp-content/uploads/2020/09/Zebre.jpg
@@ -505,71 +531,88 @@ const shuffleArray = arr => arr.sort(() => Math.random() - 0.5);
 }
 else{
   return(
-<div>
-  
-  <h1>Loading...</h1>
-    <div>
-
-    <div className="wrap1">
-    <div style={{margin:"10px"}}>
-       <label>
-       Choisir numero: 
-      <input
-        name="numberOfGuests"
+    <Container>
+      <Form>
+          <h1>Loading...</h1>
+    
+      <br/>
+         
+           
+      <Form.Row  md="6" className="justify-content-md-center">
+         
+        <Form.Group as={Col} >
+          <Form.Label>Choisir un numero</Form.Label>
+          <Form.Control
+          placeholder="numero"
+            name="numberOfGuests"
             type="number"
             value={lag}
-            onChange={onChangeLag}
-      />
-      </label>
-      </div>
-     <div style={{margin:"10px"}}>
+            onChange={onChangeLag}/>
+        
+        </Form.Group>
+      
+        </Form.Row>
 
-      <label>
-      Afficher Numero:
-      <input
-
+        <Form.Row  md="6" className="justify-content-md-center">
+         <Form.Group as={Col} >
+          <Form.Label>Afficher numero</Form.Label>
+           <Form.Check
+           
       name="AfficherNumero"
-            type="checkbox"
+            label="Aficher numero"
             checked={numeroAfficher}
             onChange={onChangeNumero}
-      />
-     </label>
-    </div>
-    </div>
-    <div className="wrap1">
-    <div style={{margin:"10px"}}>
-       <label>
-       Url Image: 
-      <input
-        name="ImageUrl"
+
+
+            />
+
+          </Form.Group>
+        </Form.Row>
+
+      <Form.Row  md="6" className="justify-content-md-center">
+        <Form.Group as={Col} >
+          <Form.Label>Url image</Form.Label>
+          <Form.Control
+          placeholder="Image"
+             name="ImageUrl"
             type="text"
             value={imag}
-            onChange={onChangeImag}
-      />
-      </label>
-       </div>
-     <div style={{margin:"10px"}}>
-      
-        <label>
-          Choisissez votre couleur favori :
-          <select value={coli} onChange={handleChangeCol}>
-            <option value="gray">Gris</option>
+            onChange={onChangeImag}/>
+         
+        </Form.Group>
+        </Form.Row>
+     
+
+
+
+         <Form.Row  md="6" className="justify-content-md-center">
+        <Form.Group as={Col} >
+          <Form.Label>Statut</Form.Label>
+          <Form.Control
+            as="select"
+            id="idSel"
+            placeholder="Statut"
+            onChange={handleChangeCol}>
+             <option value="Public">Public</option>
+          <option value="gray">Gris</option>
             <option value="red">Rouge</option>
             <option value="blue">Bleu</option>
             <option value="yellow">Jaune</option>
-          </select>
-        </label>
+     </Form.Control>
 
-    </div>
-    </div>
-    <div className="wrap1">
-    <div >
-    <button onClick={affich} style={{margin:"10px"}}>Afficher</button>
-    <button onClick={brass} style={{margin:"10px"}}>Brasser</button>
-    </div>
-    </div>
-   </div>
-  </div>
+         
+        </Form.Group>
+
+
+        </Form.Row>
+  
+       <Row md= "6" className="justify-content-md-center">
+    <Button as={Col} variant="secondary" onClick={affich} style={{margin:"10px"}}>Afficher</Button>
+    <Button as={Col} variant="secondary" onClick={brass} style={{margin:"10px"}}>Brasser</Button>
+    </Row>
+  
+     </Form>
+     </Container>
 
   )
 }

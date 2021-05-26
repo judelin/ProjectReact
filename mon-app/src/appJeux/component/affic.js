@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container} from 'react-bootstrap';
 
 
 
@@ -30,9 +31,9 @@ function Affic(props){
   const ligne=brasserMelange(props.tab,props.onClick);
   return(
 
-     <div className="wrap">
+     <Container className="wrap">
        {ligne}
-        </div>
+        </Container>
     );//
 }
 

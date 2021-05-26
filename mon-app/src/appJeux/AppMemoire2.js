@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react';
+import { Row, Col, Button, Container } from 'react-bootstrap';
 import './styles/memoire.css';
 import MemoireComponent from './component/MemoireComponent';
 import Chat from './image/imageMem/chat.jpg';
@@ -255,7 +256,10 @@ function AppMemoire2(){
     <div>
        <div>{isR}</div>
 	    <ComposantMem etat ={etat} imag={imaF} onClick={handleClick}/>
-      <div className="cent"> <button onClick={handleRestart}>Restart</button></div>
+        <Row md= "6" className="justify-content-md-center">
+       <Button as={Col} variant="secondary" onClick={handleRestart}>Restart</Button>
+       </Row>
+
 	</div>
 	     )
 	     //

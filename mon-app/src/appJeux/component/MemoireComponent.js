@@ -1,4 +1,5 @@
 import React from 'react';
+import { Image } from 'react-bootstrap';
 
 import '../styles/memoire.css';
 import Chat from '../image/imageMem/chat.jpg';
@@ -8,8 +9,8 @@ function MemoireComponent(props){
 	let i=0;
 	let eta=props.etat;
 	//console.log(i++)
-	const affich=eta? <div className="im"> <img src={props.imag} width="160" height="140" id={props.id} alt="."/></div>:
-	<div className="im"><img src={Couvert} width="160" height="160" id={props.id} alt="."/></div>
+	const affich=eta? <div className="im"> <img src={props.imag} width="80" height="80" id={props.id} alt="."/></div>:
+	<div className="im"><img src={Couvert} width="80" height="80" id={props.id} alt="."/></div>
 //
 	return(
 	     <div id={props.id} onClick={props.onClick}>

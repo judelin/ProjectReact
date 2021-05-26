@@ -1,4 +1,5 @@
 import React, {useState,useEffect} from  'react';
+import { Row, Col, Button, Container } from 'react-bootstrap';
 import TabComponent  from './component/tabComponent';
 import './styles/echec.css';
 import Imagg from './image/imageEchec/roi.png';
@@ -139,6 +140,7 @@ function AppEchec2(){
     const handleRestart=()=>{
     	//setV(true);
     	//alert(v)
+    	window.location.reload();
     }
     let lig=0;
     let tabInd=[];
@@ -276,10 +278,14 @@ function AppEchec2(){
        
 	
 	return(
-	   <div>
+	   <Container>
 	    <ComposantEch onClick={handleClick} imag={tabImag}/>
-	    <button onClick={handleRestart} className="emo">Restart</button>
-	   </div>
+	    <Row md= "6" className="justify-content-md-center">
+	   
+	    <Button as={Col} variant="secondary" onClick={handleRestart} className="emo">Restart</Button>
+	    
+	    </Row>
+	   </Container>
 	)
 }//
 else{
