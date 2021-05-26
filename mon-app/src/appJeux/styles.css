@@ -55,7 +55,11 @@
 .isW{justify-content: center;}
 
 h1{text-align: center;}
+
 .wrape{
-      margin: auto;
+        display: flex;
+      flex-wrap:wrap;
+      margin: 15px;
+
      justify-content: center;
 }

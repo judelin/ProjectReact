@@ -36,45 +36,39 @@ function TablM(){
   }
  
 return(
+  <div className="row1">
+    <div>
 
-    <Row>
-    
-      <Col></Col>
-      <Col>
+     
       
-        <Row>
+        <div className="row">
         {Cart(0)}
         {Cart(1)}
         {Cart(2)}
-        </Row>
+        </div>
 
-        <Row>
+        < div className="row">
         {Cart(3)}
         {Cart(4)}
         {Cart(5)}
-        </Row>
+        </div>
 
-        <Row>
+        <div className="row">
         {Cart(6)}
         {Cart(7)}
         {Cart(8)}
-        </Row>
-          
-
-         <Row>
-         
-         <h4>Score X: {state.context.count} O:{state.context.countt}</h4>
+        </div>
+ 
+        </div>
+        <div className="col">
+          <h4>Score X: {state.context.count} O:{state.context.countt}</h4>
           <h4>{state.context.message}</h4>
-          </Row>
-        <Row>
-        <Col sm={5}>
+         
+      
         <Button variant="secondary" onClick={() => send("GAME")}>Redemarer</Button>
-        </Col>
-        </Row>
-        </Col>
-        <Col></Col>
 
-        </Row>
+        </div>
+        </div>
 
         
      )

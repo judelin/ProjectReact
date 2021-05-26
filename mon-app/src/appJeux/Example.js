@@ -505,7 +505,72 @@ const shuffleArray = arr => arr.sort(() => Math.random() - 0.5);
 }
 else{
   return(
-  <div><h1>Error</h1></div>
+<div>
+  
+  <h1>Loading...</h1>
+    <div>
+
+    <div className="wrap1">
+    <div style={{margin:"10px"}}>
+       <label>
+       Choisir numero: 
+      <input
+        name="numberOfGuests"
+            type="number"
+            value={lag}
+            onChange={onChangeLag}
+      />
+      </label>
+      </div>
+     <div style={{margin:"10px"}}>
+
+      <label>
+      Afficher Numero:
+      <input
+
+      name="AfficherNumero"
+            type="checkbox"
+            checked={numeroAfficher}
+            onChange={onChangeNumero}
+      />
+     </label>
+    </div>
+    </div>
+    <div className="wrap1">
+    <div style={{margin:"10px"}}>
+       <label>
+       Url Image: 
+      <input
+        name="ImageUrl"
+            type="text"
+            value={imag}
+            onChange={onChangeImag}
+      />
+      </label>
+       </div>
+     <div style={{margin:"10px"}}>
+      
+        <label>
+          Choisissez votre couleur favori :
+          <select value={coli} onChange={handleChangeCol}>
+            <option value="gray">Gris</option>
+            <option value="red">Rouge</option>
+            <option value="blue">Bleu</option>
+            <option value="yellow">Jaune</option>
+          </select>
+        </label>
+
+    </div>
+    </div>
+    <div className="wrap1">
+    <div >
+    <button onClick={affich} style={{margin:"10px"}}>Afficher</button>
+    <button onClick={brass} style={{margin:"10px"}}>Brasser</button>
+    </div>
+    </div>
+   </div>
+  </div>
+
   )
 }
 

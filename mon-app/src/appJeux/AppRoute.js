@@ -120,12 +120,21 @@ function Titacto() {
              <h1>Jeux Titacto</h1>
            
 
-            <Row className="justify-content-md-center">
-    <Col xs={12} sm={3} md={3}>
+            <div className="wrape">
+  
+        <AppT/>
+    
+    </div>
+
+        </Container>
+    );//
+}
+
+
+/*
+      <Row className="justify-content-md-center">
+    <Col xs={12} sm={4} md={2}>
         <AppT/>
     </Col>
 </Row>
-
-        </Container>
-    );
-}
+*/
