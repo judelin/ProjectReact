@@ -53,3 +53,9 @@
 }
 
 .isW{justify-content: center;}
+
+h1{text-align: center;}
+.wrape{
+      margin: auto;
+     justify-content: center;
+}

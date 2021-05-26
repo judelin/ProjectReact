@@ -1,14 +1,11 @@
 import React from "react";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import { Navbar, Nav, NavDropdown, Row, Col, Container} from 'react-bootstrap';
 
 //import Tabl from './component/Tabl';
 import AppT from './component/TablM'
 import AppQ from './Example';
+import './styles.css';
 
 
 import AppE from './AppEchec2';
@@ -17,32 +14,33 @@ import AppM from './AppMemoire2';
 export default function BasicExample() {
     return (
         <Router>
-            <div>
-                <ul>
-                    <li>
-                        <Link to="/">Jeu Taquin</Link>
-                    </li>
-                    <li>
-                        <Link to="/memoire">JeuMemoire</Link>
-                    </li>
-                    <li>
-                        <Link to="/titacto">Titacto</Link>
-                    </li>
-                    <li>
-                        <Link to="/echec">Jeu Echec</Link>
-                    </li>
-                </ul>
+          
+ <Navbar  collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top" >
 
-                <hr />
+  <Navbar.Brand to="/" as={Link}>React-Jeux</Navbar.Brand>
+  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+  <Navbar.Collapse id="responsive-navbar-nav">
 
-                {/*
-          A <Switch> looks through all its children <Route>
-          elements and renders the first one whose path
-          matches the current URL. Use a <Switch> any time
-          you have multiple routes, but you want only one
-          of them to render at a time
-        */}
-                <Switch>
+    <Nav className="mx-auto">
+   
+     <NavDropdown title="Jeux" id="collasible-nav-dropdown">
+        <NavDropdown.Item as={Link} to="/">Taquin</NavDropdown.Item>
+          <NavDropdown.Divider />
+        <NavDropdown.Item as={Link} to="/memoire">Memoire</NavDropdown.Item>
+          <NavDropdown.Divider />
+        <NavDropdown.Item as={Link} to="/titacto">Titacto</NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item as={Link} to="/echec">Echec</NavDropdown.Item>
+      
+       
+      </NavDropdown>
+   
+    </Nav>
+      </Navbar.Collapse>
+
+    </Navbar>
+
+               <Switch>
                     <Route exact path="/">
                         <Taquin />
                     </Route>
@@ -56,7 +54,7 @@ export default function BasicExample() {
                         <Echec />
                     </Route>
                 </Switch>
-            </div>
+          
         </Router>
     );
 }
@@ -66,68 +64,68 @@ export default function BasicExample() {
 
 function Taquin() {
     return (
-        <div>
-            <div className="wrap">
+        <Container>
+            <Row>
                 <h1 >Jeux Taquin</h1>
-            </div>
-            <div className="wrap">
+            </Row>
+            <Row>
 
                 <AppQ />
 
 
-            </div>
+            </Row>
 
-        </div>
+        </Container>
     );
 }
 
 function Echec() {
     return (
-        <div>
-            <div className="wrap">
+        <Container>
+            <Row>
                 <h1 >Jeux Echec</h1>
-            </div>
-            <div className="wrap">
+            </Row>
+            <Row>
 
                 <AppE />
 
 
-            </div>
+            </Row>
 
-        </div>
+        </Container>
     );
 }
 
 function Memoire() {
     return (
-        <div>
-            <div className="wrap">
+        <Container>
+            <Row>
                 <h1 >Jeux Memoire</h1>
-            </div>
-            <div className="wrap">
+            </Row>
+            <Row>
 
                 <AppM />
 
 
-            </div>
+            </Row>
 
-        </div>
+        </Container>
     );
 }
 
 function Titacto() {
     return (
-        <div>
-            <div className="wrap">
-                <h1 >Jeux Titacto</h1>
-            </div>
-            <div className="wrap">
+        <Container>
+          
+             <h1>Jeux Titacto</h1>
+           
 
-                <AppT />
+            <Row className="justify-content-md-center">
+    <Col xs={12} sm={3} md={3}>
+        <AppT/>
+    </Col>
+</Row>
 
-
-            </div>
-
-        </div>
+        </Container>
     );
 }
