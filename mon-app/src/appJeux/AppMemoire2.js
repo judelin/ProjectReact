@@ -193,6 +193,7 @@ function AppMemoire2(){
   const handleRestart=()=>{
     setEtat(tf);
     setImaF(melange(imaFi));
+    window.location.reload();
   }
       
 

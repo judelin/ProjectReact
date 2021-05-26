@@ -14,8 +14,6 @@ function melange(tab){
     return tab;
 }
 
-
-
 function brasserMelange(tab,onClickk){
 
   let ligne=[];
@@ -38,9 +36,6 @@ function brasserMelange(tab,onClickk){
     
     //
 }
-
-
-
 
 function Braa(props){
   const tab=props.tab;//melange(props.tab);

@@ -194,7 +194,7 @@ function useProgressiveImage({ src,gray,lg,lr,numeroAfficher}) {
   let k2=1;
 
   width = mainImage.width;
-  height = mainImage.height;
+  height =mainImage.height;
 
      // const element = <h1 style={divStyle}>Bonjour, monde !</h1>;
 
@@ -225,17 +225,17 @@ function useProgressiveImage({ src,gray,lg,lr,numeroAfficher}) {
         
         
         className="divElem"
-        style= {
+        style = {
              divSt
            
         }>{numero}</div>
       
         }
         //
-        else if(k1===length*length-1){
+        else if(k1 === length*length-1){
             element = <div  key={k2} id={k2}
         
-        className="divElem"
+        className = "divElem"
         style= {
              divStt
            
@@ -274,7 +274,7 @@ const tae= tab.map((res, index)=><h4 key={index} id={index}>{res}</h4>)//
   return tae;
 }
 
-function Example() {
+function JeuTaquin() {
 
 const [state, send] = useMachine(affichMachine);
 
@@ -619,4 +619,4 @@ else{
 
 }
 
-export default Example;
+export default JeuTaquin;
