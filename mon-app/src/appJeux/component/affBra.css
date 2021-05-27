@@ -1,4 +1,43 @@
+* {
+  box-sizing: border-box;
+}
 .row2{
-	height: 100px;
+	height: 130px;
+	width: 120px;
+}
+.image{
+	width: 140px;
+	height: 140px;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 1px;
+}
+
+/* Clear floats after the columns */
+.row {
+	
+  
+  display: flex;
+   justify-content: center;
+
+}
+.row1:after {
+	background-color: red;
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+@media screen and (max-width: 990px) {
+
+ .image{
 	width: 80px;
+	height: 80px;
+}
+ 
 }
