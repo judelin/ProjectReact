@@ -15,7 +15,7 @@ function ImageDet(props){
 export function ImageComposant(props){
     
     const etat = props.etat;
-	const affiche = etat ? <ImageDet src={props.src} id={props.id} lig={props.lig} onClick={props.onClick}/>:
+	const affiche = etat ? <ImageDet src={props.src} id={props.id} lig={props.lig}/>:
 	<ImageDet src={Couvert} id={props.id} lig={props.lig} onClick={props.onClick}/> //
 	return(
 	    <>

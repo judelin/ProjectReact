@@ -196,29 +196,9 @@ function AppMemoire3(){
  	const etat1 = etat.slice();
  	if(tabId.length === 2 && 
 				tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src !== tab[t[tabInd[1]][0]].props.children[t[tabInd[1]][1]].props.src ){
- 			if(tabResult.includes(tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src) === true 
-               		&& tabResult.includes(tab[t[tabInd[1]][0]].props.children[t[tabInd[1]][1]].props.src) === false){
-       setTimeout(affOne, 1000, etat1, false, tabId[1]);
-     }
-       else if(tabResult.includes(tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src) === true 
-               		&& tabResult.includes(tab[t[tabInd[1]][0]].props.children[t[tabInd[1]][1]].props.src) === false){
-			    setTimeout(affOne, 1000, etat1, false, tabId[0]);
-			 }
-			     else if(tabResult.includes(tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src) === false 
-               		&& tabResult.includes(tab[t[tabInd[1]][0]].props.children[t[tabInd[1]][1]].props.src) === true){
-               setTimeout(affOne, 1000, etat1, false, tabId[0]);
-             }
-             else if(tabResult.includes(tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src) === false 
-               		&& tabResult.includes(tab[t[tabInd[1]][0]].props.children[t[tabInd[1]][1]].props.src) === true){
-			     setTimeout(affOne, 1000, etat1, false, tabId[1]);
-			 }
-     else if(tabResult.includes(tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src) === false 
-               		&& tabResult.includes(tab[t[tabInd[1]][0]].props.children[t[tabInd[1]][1]].props.src) === false){
+ 		
      	    setTimeout(affD, 1000, etat1, false, false, tabId[0], tabId[1]);
-     }
-     else{}
-
-      // console.log(tabId)
+     
  	}
  	else 	if(tabId.length === 2 &&
  		tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src === tab[t[tabInd[1]][0]].props.children[t[tabInd[1]][1]].props.src){
@@ -294,6 +274,33 @@ export default AppMemoire3;
 
 
 
+ 	if(tabId.length === 2 && 
+				tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src !== tab[t[tabInd[1]][0]].props.children[t[tabInd[1]][1]].props.src ){
+ 			if(tabResult.includes(tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src) === true 
+               		&& tabResult.includes(tab[t[tabInd[1]][0]].props.children[t[tabInd[1]][1]].props.src) === false){
+       setTimeout(affOne, 1000, etat1, false, tabId[1]);
+     }
+       else if(tabResult.includes(tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src) === true 
+               		&& tabResult.includes(tab[t[tabInd[1]][0]].props.children[t[tabInd[1]][1]].props.src) === false){
+			    setTimeout(affOne, 1000, etat1, false, tabId[0]);
+			 }
+			     else if(tabResult.includes(tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src) === false 
+               		&& tabResult.includes(tab[t[tabInd[1]][0]].props.children[t[tabInd[1]][1]].props.src) === true){
+               setTimeout(affOne, 1000, etat1, false, tabId[0]);
+             }
+             else if(tabResult.includes(tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src) === false 
+               		&& tabResult.includes(tab[t[tabInd[1]][0]].props.children[t[tabInd[1]][1]].props.src) === true){
+			     setTimeout(affOne, 1000, etat1, false, tabId[1]);
+			 }
+     else if(tabResult.includes(tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src) === false 
+               		&& tabResult.includes(tab[t[tabInd[1]][0]].props.children[t[tabInd[1]][1]].props.src) === false){
+     	    setTimeout(affD, 1000, etat1, false, false, tabId[0], tabId[1]);
+     }
+     else{}
+
+      // console.log(tabId)
+ 	}
+ 	
 
 			
 		if(tabId.length <= 1){
