@@ -134,9 +134,14 @@ function AppMemoire3(){
 		setEtat(etatt);
 	
 		if(tabId.length <= 1){
-
-			tabInd.push(i);
-		  //console.log(tabInd);
+      
+     if(tabInd.length === 0){
+			 tabInd.push(i);
+		}
+		 else if(tabInd.length === 1 && tabInd[0] !== i){
+          tabInd.push(i);
+		 }
+		  console.log(tabInd);
 
 			setTabId(tabInd)
 		//	alert(tabInd[0])
@@ -148,7 +153,12 @@ function AppMemoire3(){
 			tabInd.pop();
 			tabInd.pop();
 			setTabId([]);
-			tabInd.push(i);
+			 if(tabInd.length === 0){
+			 tabInd.push(i);
+		}
+		 else if(tabInd.length === 1 && tabInd[0] !== i){
+          tabInd.push(i);
+		 }
 			setTabId(tabInd)
 		}
 		else{}
@@ -210,8 +220,7 @@ function AppMemoire3(){
 
       // console.log(tabId)
  	}
- 	else 	if(tabId.length === 2 && 
- 		tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src === tab[t[tabInd[1]][0]].props.children[t[tabInd[1]][1]].props.src){
+ 	else 	if(tabId.length === 2){
          // setTimeout(affD, 1000, etat1, true, true, tabId[0], tabId[1]);
           if(tabResult.includes(tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src) === false){
  		     tabResult.push(tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src);
