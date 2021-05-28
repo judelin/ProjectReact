@@ -197,26 +197,26 @@ function AppMemoire2(){
   }
       
 
-	const handleClick=(event)=>{
+	const handleClick = (event)=>{
 
     //setId(event.target.id)
-     const tabM=TabMem({imag:imaF,etat:etat,onClick:handleClic});
-     const ta=taa.slice();
-     const etatt=etat.slice();
+     const tabM = TabMem({imag:imaF,etat:etat,onClick:handleClic});
+     const ta = taa.slice();
+     const etatt = etat.slice();
        
-       if(ta.length===0){
+       if(ta.length === 0){
 		ta.push({id:tabM[t[event.target.id][0]].props.children[t[event.target.id][1]].props.id,
 			ima:tabM[t[event.target.id][0]].props.children[t[event.target.id][1]].props.imag})
                   //console.log(taa)
                   setIdi(event.target.id);
              }
-             else if(ta.length===1&& idi!==event.target.id){
+             else if(ta.length === 1 && idi !== event.target.id){
              	ta.push({id:tabM[t[event.target.id][0]].props.children[t[event.target.id][1]].props.id,
 			ima:tabM[t[event.target.id][0]].props.children[t[event.target.id][1]].props.imag})
                //console.log(taa)
                setId(event.target.id);
              } else{}
-	 etatt[event.target.id]=true;
+	 etatt[event.target.id] = true;
 
    setTaa(ta);
  
@@ -224,7 +224,7 @@ function AppMemoire2(){
 	}
 
    useEffect(()=>{
-     const etat1=etat.slice(); 
+     const etat1 = etat.slice(); 
    	   if(eta){
 		setTa(false);
 		setTimeout(aff, 2000);
