@@ -112,6 +112,7 @@ function AppMemoire3(){
   const [ tabId, setTabId] = useState([]);
   const [result, setResult] = useState([]);
   const [eta, setEta] = useState(true);
+  const [click, setClick] = useState(1);
 
 
   const tabResult = result.slice();
@@ -123,14 +124,19 @@ function AppMemoire3(){
    // setImaF(melange(imaFi));
     window.location.reload();
   }
-    
-     
+   
+   let indClick = click;
+ 
 	function handleClick(e){
 
 		//console.log(e.target.src);
 		 const i = parseInt(e.target.id, 10);
 		//alert(i);
-		etatt[i] = true;
+
+     // setClick(click + 1);
+ 
+	  	etatt[i] = true;
+	
 		setEtat(etatt);
 	
 		if(tabId.length <= 1){
@@ -141,7 +147,7 @@ function AppMemoire3(){
 		 else if(tabInd.length === 1 && tabInd[0] !== i){
           tabInd.push(i);
 		 }
-		  console.log(tabInd);
+		 // console.log(tabInd);
 
 			setTabId(tabInd)
 		//	alert(tabInd[0])
@@ -185,8 +191,7 @@ function AppMemoire3(){
      useEffect(()=>{
     if(eta){
     	setEta(false);
-     setTimeout(setEtat, 2000, 	tf)
-
+     setTimeout(setEtat, 2000, 	tf);
     }
     
    // console.log(tab[0])
@@ -196,27 +201,39 @@ function AppMemoire3(){
  	const etat1 = etat.slice();
  	if(tabId.length === 2 && 
 				tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src !== tab[t[tabInd[1]][0]].props.children[t[tabInd[1]][1]].props.src ){
- 		
-     	    setTimeout(affD, 1000, etat1, false, false, tabId[0], tabId[1]);
+ 		 
+     	  setTimeout(affD, 500, etat1, false, false, tabId[0], tabId[1]);
+     	  setClick(1)
+     	  //console.log("different");
      
  	}
  	else 	if(tabId.length === 2 &&
  		tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src === tab[t[tabInd[1]][0]].props.children[t[tabInd[1]][1]].props.src){
-         // setTimeout(affD, 1000, etat1, true, true, tabId[0], tabId[1]);
+ 		    //console.log("same");
+      
           if(tabResult.includes(tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src) === false){
  		     tabResult.push(tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src);
+ 		   //  setTimeout(affD, 1000, etat1, true, true, tabId[0], tabId[1]);
          setResult(tabResult);
+         //console.log(tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.etat);
+        // console.log(tab[t[tabInd[1]][0]].props.children[t[tabInd[1]][1]].props.etat);
        }else{}
  	} else{}
- //   console.log(tabId)
+
+ 	
+    //console.log(tabId)
 },[tabId]);
 
-  /*useEffect(()=>{
- 
-       setTimeout(setEtat, 1000, 	tf)
-  
- //   console.log(tabId)
-},[setEtat]);*/
+  /* useEffect(()=>{
+    if(click === 3){
+    	setClick(1);
+     
+    }else if(click === 2 ){
+    	setClick(1);
+    } else{}
+    
+   // console.log(tab[0])
+   },[click, setClick]);*/
   
   const isWin = tabResult.length === 8 ? <Row><h2 className="hh4">Félicitation</h2></Row>:<Row className="hh4"><h2>Memorisation</h2></Row>;
 
@@ -300,7 +317,7 @@ export default AppMemoire3;
 
       // console.log(tabId)
  	}
- 	
+
 
 			
 		if(tabId.length <= 1){
