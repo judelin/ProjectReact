@@ -202,8 +202,8 @@ function AppMemoire3(){
  	if(tabId.length === 2 && 
 				tab[t[tabInd[0]][0]].props.children[t[tabInd[0]][1]].props.src !== tab[t[tabInd[1]][0]].props.children[t[tabInd[1]][1]].props.src ){
  		 
-     	  setTimeout(affD, 500, etat1, false, false, tabId[0], tabId[1]);
-     	  setClick(1)
+     	  setTimeout(affD, 1000, etat1, false, false, tabId[0], tabId[1]);
+     	 // setClick(1)
      	  //console.log("different");
      
  	}
