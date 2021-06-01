@@ -125,10 +125,10 @@ function AppMemoire3(){
     window.location.reload();
   }
    
-   let indClick = click;
+   //let indClick = click;
  
 	function handleClick(e){
-
+     const indClick = click;
 		//console.log(e.target.src);
 		 const i = parseInt(e.target.id, 10);
 		//alert(i);
