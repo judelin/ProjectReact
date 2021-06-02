@@ -24,11 +24,11 @@ export default function BasicExample() {
     <Nav className="mx-auto">
    
      <NavDropdown title="Jeux" id="collasible-nav-dropdown">
-        <NavDropdown.Item as={Link} to="/">Taquin</NavDropdown.Item>
+        <NavDropdown.Item as={Link} to="/">Titacto</NavDropdown.Item>
           <NavDropdown.Divider />
         <NavDropdown.Item as={Link} to="/memoire">Memoire</NavDropdown.Item>
           <NavDropdown.Divider />
-        <NavDropdown.Item as={Link} to="/titacto">Titacto</NavDropdown.Item>
+        <NavDropdown.Item as={Link} to="/taquin">Taquin</NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item as={Link} to="/echec">Echec</NavDropdown.Item>
       
@@ -42,13 +42,13 @@ export default function BasicExample() {
 
                <Switch>
                     <Route exact path="/">
-                        <Taquin />
+                        <Titacto />
                     </Route>
                     <Route path="/memoire">
                         <Memoire />
                     </Route>
-                    <Route path="/titacto">
-                        <Titacto />
+                    <Route path="/taquin">
+                        <Taquin />
                     </Route>
                     <Route path="/echec">
                         <Echec />
