@@ -26,6 +26,64 @@ export function ImageComposant(props){
 }
 
 
+function ImageComponent(props){
+  return(
+  <div  onClick={props.onClick}>
+      <img src={props.src} className="image"/>
+  </div>
+  )//
+}
+
+export function AfficheComponent(j, etat, src, onClick){
+  let i = j;
+  const affiche = etat? <ImageComponent etat ={etat} src={src} onClick ={()=>onClick(i)}/>:
+   <ImageComponent etat ={etat} src={Couvert} onClick ={()=>onClick(i)}/>
+  return(
+    <>
+         {affiche}
+         </>
+    )
+}//
+
+
+function CouleurComponent(props){
+  return(
+  <div  onClick={props.onClick}>
+      <div className="image" style={{backgroundColor:props.col}}></div>
+  </div>
+  )//
+}
+
+export function AfficheComponentCouleur(j, etat, col, onClick){
+  let i = j;
+  const affiche = etat? <CouleurComponent etat ={etat} col={col} onClick ={()=>onClick(i)}/>:
+   <CouleurComponent etat ={etat} col="gray" onClick ={()=>onClick(i)}/>
+  return(
+    <>
+         {affiche}
+         </>
+    )
+}//
+
+function LettreComponent(props){
+  return(
+  <div  onClick={props.onClick}>
+      <div className="image" style={{backgroundColor:props.col}}><h2 className="alignCenter">{props.lettre}</h2></div>
+  </div>
+  )//
+}
+
+export function AfficheComponentLettre(j, etat, col, lettre, onClick){
+  let i = j;
+  const affiche = etat? <LettreComponent etat ={etat} lettre={lettre} onClick ={()=>onClick(i)}/>:
+   <LettreComponent etat ={etat} col={col} onClick ={()=>onClick(i)}/>
+  return(
+    <>
+         {affiche}
+         </>
+    )
+}//
+
 /*
 .layout {
   display: flex;

@@ -3,9 +3,10 @@ import MemoireComponent from './component/MemoireComponent';
 
 import Couvert from './image/imageMem/couvert.jpg';
 import { Button, Row, Col, ButtonGroup} from 'react-bootstrap';
+import {AfficheComponent, AfficheComponentCouleur, AfficheComponentLettre} from './component/imageComposant';
 import './component/affBra.css';
 import {jsonImag, jsonImagee, jsonImagee1, jsonImagee2,jsonImageeL, 
-	jsonImageeL1, jsonImageeL2 ,melange} from './component/data';
+	jsonImageeL1, jsonImageeL2, jsonCol, jsonCol1, jsonCol2 ,melange} from './component/data';
 
 
 
@@ -53,30 +54,13 @@ function construireFaux(ind){
   const tv1 = construireVrai(5);
   const tv2 = construireVrai(6);
 
-function ImageComponent(props){
-	return(
-	<div  onClick={props.onClick}>
-	    <img src={props.src} className="image"/>
-	</div>
-	)//
-}
-
-function AfficheComponent(j, etat, src, onClick){
-	let i = j;
-	const affiche = etat? <ImageComponent etat ={etat} src={src} onClick ={()=>onClick(i)}/>:
-	 <ImageComponent etat ={etat} src={Couvert} onClick ={()=>onClick(i)}/>
-	return(
-		<>
-         {affiche}
-         </>
-		)
-}//
 
 function TabBoard(props){
 	let sqrt = Math.round(Math.sqrt(props.tab.length));
 	let tab = props.tab;
 	let onClick = props.onClick;
 	const etat = props.etat;
+  const col = "gray"
 	//alert(sqrt)
 	let ligne = [];
 	let  id = 0;
@@ -84,8 +68,10 @@ function TabBoard(props){
 	for(var i = 0; i<sqrt; i++){
          let colonne = [];
 		for(var j = 0; j<sqrt; j++){
-			const affiche = AfficheComponent(id, etat[id], tab[id].imag, onClick)
-			colonne.push(<div className="column" key={id}>{affiche}</div>)
+			const affiche = (props.type === "image") ?
+      AfficheComponent(id, etat[id], tab[id].imag, onClick):(props.type === "lettre")?
+      AfficheComponentLettre(id, etat[id], col, tab[id].imag, onClick): AfficheComponentCouleur(id, etat[id], tab[id].imag, onClick);
+			colonne.push(<div className="column" key={id}>{affiche}</div>);
           id = id+1;
 		}//
 
@@ -106,8 +92,8 @@ function AppMemoire(){
 	const[etat1, setEtat1] = useState(false);
 	const[etat2, setEtat2] = useState(false);
 	const[longueur, setLongueur] = useState(4)
-	const [imageType, setImageType] = useState("animaux");
-
+//	const [imageType, setImageType] = useState("animaux");
+  const [type, setType] = useState("image");
 
 
 	const [etat, setEtat] = useState(tv);
@@ -133,31 +119,37 @@ function AppMemoire(){
    	if(longueur === 4){
      setEtat(tv)
      setTimeout(setEtat, 2000, tf);
-       if(imageType === "animaux"){
+       if(type === "image"){
         setTabImage(melange(jsonImagee));
-    } else{
+    } else if(type === "lettre") {
     	  setTabImage(melange(jsonImageeL));
-    }
+    } else{
+       setTabImage(melange(jsonCol));
+     }
    }
    else if(longueur === 5){
-   	   if(imageType === "animaux"){
+   	   if(type === "image"){
 
        setTabImage(melange(jsonImagee1));
      }
-     else{
+     else if(type === "lettre") {
     	  setTabImage(melange(jsonImageeL1));
-    }
+    } else{
+       setTabImage(melange(jsonCol1));
+     }
        setEtat(tv1)
        setTimeout(setEtat, 2000, tf1);
    }
    else{
    	 
-    if(imageType === "animaux"){
+    if(type === "image"){
        setTabImage(melange(jsonImagee2));
       }
-       else{
+       else if(type === "lettre") {
     	  setTabImage(melange(jsonImageeL2));
-    }
+    } else{
+       setTabImage(melange(jsonCol2));
+     }
        setEtat(tv2)
        setTimeout(setEtat, 2000, tf2);
    }
@@ -166,22 +158,33 @@ function AppMemoire(){
 
    function handleImage(){
    	 setTabImage(melange(jsonImagee));
-   	 setImageType("animaux");
+   	// setImageType("animaux");
+      setType("image");
+   }
+
+    function handleCouleur(){
+     setTabImage(melange(jsonCol));
+     setType("couleur");
+    // setImageType("couleur")
    }
 
     function handleImageLettre(){
    	 setTabImage(melange(jsonImageeL));
-   	 setImageType("lettre");
+   	// setImageType("lettre");
+      setType("lettre");
    }
 
 
    function handleClic4x4(){
 
-   	  if(imageType === "animaux"){
+   	  if(type === "image"){
         setTabImage(melange(jsonImagee));
-    } else{
+    } else if(type === "lettre") {
     	  setTabImage(melange(jsonImageeL));
     }
+    else{
+       setTabImage(melange(jsonCol));
+     }
       setEtat(tv)
       setTimeout(setEtat, 2000, tf);
       setLongueur(4);
@@ -191,13 +194,16 @@ function AppMemoire(){
 
    function handleClic5x5(){
 
-   	 if(imageType === "animaux"){
+   	 if(type === "image"){
 
        setTabImage(melange(jsonImagee1));
      }
-     else{
+     else if(type === "lettre") {
     	  setTabImage(melange(jsonImageeL1));
     }
+    else{
+       setTabImage(melange(jsonCol1));
+     }
        setEtat(tv1)
        setTimeout(setEtat, 2000, tf1);
        setLongueur(5);
@@ -206,12 +212,15 @@ function AppMemoire(){
   }
     function handleClic6x6(){
 
-    if(imageType === "animaux"){
+    if(type === "image"){
        setTabImage(melange(jsonImagee2));
       }
-       else{
+       else if(type === "lettre") {
     	  setTabImage(melange(jsonImageeL2));
     }
+     else{
+       setTabImage(melange(jsonCol2));
+     }
        setEtat(tv2)
        setTimeout(setEtat, 2000, tf2);
        setLongueur(6);
@@ -294,7 +303,7 @@ function AppMemoire(){
 		   <div> 
 		      
 		         {isWin}
-		       <TabBoard etat={etat} tab={tabImage}onClick={(i) => handleClic(i)}/>
+		       <TabBoard etat={etat} type={type} tab={tabImage}onClick={(i) => handleClic(i)}/>
 		         <br/>
              <Row md= "2" className="justify-content-md-center">
                 <ButtonGroup>
@@ -309,7 +318,7 @@ function AppMemoire(){
                 <ButtonGroup>
                   <Button  variant="secondary"  onClick={handleImage} >Animaux</Button>
                   <Button  variant="secondary" onClick={handleImageLettre}>Lettre</Button>
-                  <Button  variant="secondary">Couleur</Button>
+                  <Button  variant="secondary" onClick={handleCouleur}>Couleur</Button>
                </ButtonGroup>
              </Row>
 		           <Row md= "6" className="justify-content-md-center">

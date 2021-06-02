@@ -22,48 +22,6 @@ import Oiseau2 from '../image/imageMem/oiseau2.jpg';
 import Oiseau3 from '../image/imageMem/oiseau3.jpg';
 
 
-import A from '../image/imageLettre/A.jpg'
-import B from '../image/imageLettre/B.jpg'
-import C from '../image/imageLettre/C.jpg'
-import D from '../image/imageLettre/D.jpg'
-import E from '../image/imageLettre/E.jpg'
-import F from '../image/imageLettre/F.jpg'
-import G from '../image/imageLettre/G.jpg'
-import H from '../image/imageLettre/H.jpg'
-import I from '../image/imageLettre/I.jpg'
-import J from '../image/imageLettre/J.jpg'
-import K from '../image/imageLettre/K.jpg'
-import L from '../image/imageLettre/L.jpg'
-import M from '../image/imageLettre/M.jpg'
-
-import N from '../image/imageLettre/N.jpg'
-import O from '../image/imageLettre/O.jpg'
-import P from '../image/imageLettre/P.jpg'
-import Q from '../image/imageLettre/Q.jpg'
-import R from '../image/imageLettre/R.jpg'
-import S from '../image/imageLettre/S.jpg'
-import T from '../image/imageLettre/T.jpg'
-import U from '../image/imageLettre/U.jpg'
-import V from '../image/imageLettre/V.jpg'
-import W from '../image/imageLettre/W.jpg'
-import X from '../image/imageLettre/X.jpg'
-import Y from '../image/imageLettre/Y.jpg'
-import Z from '../image/imageLettre/Z.jpg'
-
-
-
-
-//const imageA=[Chat,Jaco,Chien,Lapin,Chien1,Chat,Chien,Singe,Jaco,Lapin,Tigre,Ecureuil,Tigre,Singe,Chien1,Ecureuil];
-
-const jsonImage = [{
-	id:1,
-	imag:Chat
-},
-{
-	id:2,
-	imag:Chien
-}
-];
 
 export const jsonImag = [{
 	id:1,
@@ -155,115 +113,194 @@ export const jsonImag = [{
 
 export const jsonImagLettre = [{
 	id:1,
-	imag:A
+	imag:"A"
 },
 {
 	id:2,
-	imag:B
+	imag:"B"
 },
 {
 	id:3,
-	imag:C
+	imag:"C"
 },
 {
 	id:4,
-	imag:D
+	imag:"D"
 }
 ,
 {
 	id:5,
-	imag:E
+	imag:"E"
 },
 
 {
 	id:6,
-	imag:F
+	imag:"F"
 },
 {
 	id:7,
-	imag:G
+	imag:"G"
 },
 {
 	id:8,
-	imag:H
+	imag:"H"
 },
 {
 	id:9,
 	
-	imag:I
+	imag:"I"
 },
 {
 	id:10,
 	
-	imag:J
+	imag:"J"
 },
 {
 	id:11,
-	imag:K
+	imag:"K"
 },
 {
 	id:12,
-	imag:M
+	imag:"M"
 }
 ,
 {
 	id:13,
-	imag:N
+	imag:"N"
 },
 
 {
 	id:14,
-	imag:O
+	imag:"O"
 },
 {
 	id:15,
-	imag:Q
+	imag:"Q"
 },
 {
 	id:16,
-	imag:R
+	imag:"R"
 },{
 	id:17,
-	imag:S
+	imag:"S"
 },
 {
 	id:18,
-	imag:T
+	imag:"T"
 },
 {
 	id:19,
-	imag:U
+	imag:"U"
 },
 {
 	id:20,
-	imag:V
+	imag:"V"
 },
 
 {
 	id:21,
-	imag:W
+	imag:"W"
 },
 {
 	id:22,
-	imag:X
+	imag:"X"
 },{
 	id:23,
-	imag:Y
+	imag:"Y"
 },
 {
 	id:24,
-	imag:Z
+	imag:"Z"
 },
 {
 	id:25,
-	imag:L
+	imag:"L"
 },
 {
 	id:26,
-	imag:P
+	imag:"P"
 }
 ];
 
+
+export const jsonColeur = [{
+	id:1,
+	imag:"red"
+},
+{
+	id:2,
+	imag:"blue"
+},
+{
+	id:3,
+	imag:"yellow"
+},
+{
+	id:4,
+	imag:"green"
+}
+,
+{
+	id:5,
+	imag:"pink"
+},
+
+{
+	id:6,
+	imag:"black"
+},
+{
+	id:7,
+	imag:"orange"
+},
+{
+	id:8,
+	imag:"blueViolet"
+},
+{
+	id:9,
+	imag:"sienna"
+},
+{
+	id:10,
+	imag:"SpringGreen"
+},
+{
+	id:11,
+	imag:"tan"
+},
+{
+	id:12,
+	imag:"Tomato"
+}
+,
+{
+	id:13,
+	imag:"thistle"
+},
+
+{
+	id:14,
+	imag:"teal"
+},
+{
+	id:15,
+	imag:"turquoise"
+},
+{
+	id:16,
+	imag:"YellowGreen"
+},
+{
+	id:17,
+	imag:"Wheat"
+},
+{
+	id:18,
+	imag:"Violet"
+}
+
+]
 
 export function melange(tab){
     var a = 0;
@@ -280,6 +317,7 @@ export function melange(tab){
 
 const melangeJsonImage = melange(jsonImag);
 
+const melangeJsonCouleur = melange(jsonColeur);
 const melangeJsonImageLettre = melange(jsonImagLettre);
 
 function tab4(){
@@ -362,3 +400,43 @@ export const jsonImageeL1 = melange(jsonImagieL1);
 
 const jsonImagieL2 = tabQL2.concat(tabQL2);
 export const jsonImageeL2 = melange(jsonImagieL2);
+
+
+
+function tabC4(){
+	var tab = [];
+	for(var i = 0; i<8; i++){
+		tab[i] = melangeJsonCouleur[i];
+	}
+	return tab;
+}
+
+function tabC5(){
+	var tab = [];
+	for(var i = 0; i<13; i++){
+		tab[i] = melangeJsonCouleur[i];
+	}
+	return tab;
+}
+
+function tabC6(){
+	var tab = [];
+	for(var i = 0; i<18; i++){
+		tab[i] = melangeJsonCouleur[i];
+	}
+	return tab;
+}
+
+
+const tabQC = tabC4();
+const tabQC1 = tabC5();
+const tabQC2 = tabC6();
+
+const jsonC = tabQC.concat(tabQC);
+export const jsonCol = melange(jsonC);
+
+const jsonC1 = tabQC1.concat(tabQC1);
+export const jsonCol1 = melange(jsonC1);
+
+const jsonC2 = tabQC2.concat(tabQC2);
+export const jsonCol2 = melange(jsonC2);
