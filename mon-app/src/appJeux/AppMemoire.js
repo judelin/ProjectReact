@@ -1,111 +1,16 @@
 import React,{useState,useEffect} from 'react';
 import MemoireComponent from './component/MemoireComponent';
-import Chat from './image/imageMem/chat.jpg';
-import Chien from './image/imageMem/chien.jpg';
-import Jaco from './image/imageMem/jaco.jpg';
-import Chien1 from './image/imageMem/chien1.jpg';
-import Ecureuil from './image/imageMem/ecureuil.jpg';
-import Singe from './image/imageMem/singe.jpg';
-import Tigre from './image/imageMem/titre.jpg';
-import Lapin from './image/imageMem/lapin.jpg';
+
 import Couvert from './image/imageMem/couvert.jpg';
+import { Button, Row, Col, ButtonGroup} from 'react-bootstrap';
 import './component/affBra.css';
+import {jsonImag, jsonImagee, jsonImagee1, jsonImagee2,jsonImageeL, 
+	jsonImageeL1, jsonImageeL2 ,melange} from './component/data';
 
 
-const imageA=[Chat,Jaco,Chien,Lapin,Chien1,Chat,Chien,Singe,Jaco,Lapin,Tigre,Ecureuil,Tigre,Singe,Chien1,Ecureuil];
 
-const jsonImage = [{
-	id:1,
-	etat:true,
-	imag:Chat
-},
-{
-	id:1,
-	etat:true,
-	imag:Chat
-},
-{
-	id:3,
-	etat:true,
-	imag:Chien
-},
-{
-	id:2,
-	etat:true,
-	imag:Lapin
-}];
-
-const jsonImagee = [{
-	id:1,
-
-	imag:Chat
-},
-{
-	id:2,
-
-	imag:Jaco
-},
-{
-	id:3,
-
-	imag:Chien
-},
-{
-	id:4,
-	imag:Lapin
-}
-,
-{
-	id:5,
-	imag:Chien1
-},
-
-{
-	id:6,
-	imag:Singe
-},
-{
-	id:7,
-	imag:Tigre
-},
-{
-	id:8,
-	imag:Ecureuil
-},{
-	id:1,
-	imag:Chat
-},
-{
-	id:2,
-	imag:Jaco
-},
-{
-	id:3,
-	imag:Chien
-},
-{
-	id:4,
-	imag:Lapin
-}
-,
-{
-	id:5,
-	imag:Chien1
-},
-
-{
-	id:6,
-	imag:Singe
-},
-{
-	id:7,
-	imag:Tigre
-},
-{
-	id:8,
-	imag:Ecureuil
-}
-]
+//const jsonImagie = jsonImag.concat(jsonImag);
+//const jsonImagee = melange(jsonImagie);
 
 function construireVrai(ind){
   var tab=[];
@@ -141,31 +46,12 @@ function construireFaux(ind){
 }
 
 
-function melange(tab){
-    var a=0;
-    var t;
-    for(var i=tab.length-1; i>=0; i--){
-      a=Math.floor(Math.random() * Math.floor(tab.length));
-      t=tab[a];
-      tab[a]=tab[i];
-      tab[i]=t;
-    
-    }
-    return tab;
-}
-
-function retournerCard(tab){
-  var tabe = [];
-	for(var i = 0; i<tab.length; i++){
-		 tab[i].etat = false;
-
-	}
-	tabe = tab;
-
-	return tab;
-
-
-}
+	const tf = construireFaux(4);
+	const tf1 = construireFaux(5);
+		const tf2 = construireFaux(6);
+  const tv = construireVrai(4);
+  const tv1 = construireVrai(5);
+  const tv2 = construireVrai(6);
 
 function ImageComponent(props){
 	return(
@@ -212,19 +98,21 @@ function TabBoard(props){
 function AppMemoire(){
 	//const jsonImagee = jsonImage.concat(jsonImage);
 
-   const tf = construireFaux(4);
-   const tv = construireVrai(4);
-
   const [etatt, setEtatt] = useState(true);
 
 	const [pair, setPaire] = useState([]);
 	const [id1, setId1] = useState(0);
 	const [id2, setId2] = useState(0);
-	const [click, setClick] = useState(0);
 	const[etat1, setEtat1] = useState(false);
 	const[etat2, setEtat2] = useState(false);
+	const[longueur, setLongueur] = useState(4)
+	const [imageType, setImageType] = useState("animaux");
+
+
+
 	const [etat, setEtat] = useState(tv);
   const[tabImage, setTabImage] = useState(jsonImagee);
+  const [result, setResult] = useState(0);
 
   const etatM = etat.slice();
   const tabI = tabImage.slice();
@@ -240,12 +128,99 @@ function AppMemoire(){
    setEtat(etatM);
 }
 
+   function handleRestart(){
+
+   	if(longueur === 4){
+     setEtat(tv)
+     setTimeout(setEtat, 2000, tf);
+       if(imageType === "animaux"){
+        setTabImage(melange(jsonImagee));
+    } else{
+    	  setTabImage(melange(jsonImageeL));
+    }
+   }
+   else if(longueur === 5){
+   	   if(imageType === "animaux"){
+
+       setTabImage(melange(jsonImagee1));
+     }
+     else{
+    	  setTabImage(melange(jsonImageeL1));
+    }
+       setEtat(tv1)
+       setTimeout(setEtat, 2000, tf1);
+   }
+   else{
+   	 
+    if(imageType === "animaux"){
+       setTabImage(melange(jsonImagee2));
+      }
+       else{
+    	  setTabImage(melange(jsonImageeL2));
+    }
+       setEtat(tv2)
+       setTimeout(setEtat, 2000, tf2);
+   }
+   setResult(0);
+  }
+
+   function handleImage(){
+   	 setTabImage(melange(jsonImagee));
+   	 setImageType("animaux");
+   }
+
+    function handleImageLettre(){
+   	 setTabImage(melange(jsonImageeL));
+   	 setImageType("lettre");
+   }
+
+
+   function handleClic4x4(){
+
+   	  if(imageType === "animaux"){
+        setTabImage(melange(jsonImagee));
+    } else{
+    	  setTabImage(melange(jsonImageeL));
+    }
+      setEtat(tv)
+      setTimeout(setEtat, 2000, tf);
+      setLongueur(4);
+      setResult(0);
+  
+  }
+
+   function handleClic5x5(){
+
+   	 if(imageType === "animaux"){
+
+       setTabImage(melange(jsonImagee1));
+     }
+     else{
+    	  setTabImage(melange(jsonImageeL1));
+    }
+       setEtat(tv1)
+       setTimeout(setEtat, 2000, tf1);
+       setLongueur(5);
+       setResult(0);
+  
+  }
+    function handleClic6x6(){
+
+    if(imageType === "animaux"){
+       setTabImage(melange(jsonImagee2));
+      }
+       else{
+    	  setTabImage(melange(jsonImageeL2));
+    }
+       setEtat(tv2)
+       setTimeout(setEtat, 2000, tf2);
+       setLongueur(6);
+       setResult(0);
+ 
+  }
+
 	function handleClic(i){
 		
-        // console.log(pair.length);
-        // console.log(listPair.length);
-        // console.log(imagi);
-        // jsonImagee[i].etat = true;
         if(pair.length === 0 && etatM[i] === false){
           //setPaire([]);
            	listPair[0] = tabI[i].id;
@@ -253,9 +228,9 @@ function AppMemoire(){
           	setId1(i);
           	setEtat1(true);
 
-          	console.log("etat1");;
+          	console.log("etat1");
         }
-         else if(pair.length === 1 && etatM[i] === false){ 
+        else if(pair.length === 1 && etatM[i] === false){ 
              listPair[1] = tabI[i].id;
              etatM[i] = true;
              setId2(i);
@@ -270,14 +245,14 @@ function AppMemoire(){
             //	console.log(listPair);
            setPaire(listPair);
            	setEtat(etatM)
-           setClick(click + 1);
+          
 	}
 
  useEffect(()=>{
     if(etatt){
     	console.log("false")
     	setEtatt(false);
-     setTimeout(setEtat, 2000, tf);
+      setTimeout(setEtat, 2000, tf);
     
     }
     
@@ -289,9 +264,12 @@ function AppMemoire(){
         	setEtat1(false);
      	  setEtat2(false);
        if(pair[0] === pair[1]){
-      	  alert("egal");
+      	  //alert("egal");
       	 console.log(pair[0]+" "+pair[1]);
       	 setPaire([]);
+      	 setResult(result + 1);
+
+
       }
       else {
       	if(etat1 && etat2){
@@ -305,105 +283,42 @@ function AppMemoire(){
       
   }
   
-  // console.log(pair)
-  console.log("click "+click);
+   console.log(result);
 
-   },[pair, setPaire, click]);
+    
+   },[pair, setPaire]);
+
+    const isWin = result === (tabImage.length/2) ? <Row><h1>Félicitation</h1></Row>:<Row> <h1>Tester votre capacité de memoriser</h1></Row>;
 
 	return(
 		   <div> 
-		       <h1>Tester votre capacité de memoriser</h1>
+		      
+		         {isWin}
 		       <TabBoard etat={etat} tab={tabImage}onClick={(i) => handleClic(i)}/>
+		         <br/>
+             <Row md= "2" className="justify-content-md-center">
+                <ButtonGroup>
+                  <Button  variant="secondary" onClick={handleClic4x4}>4x4</Button>
+                  <Button  variant="secondary" onClick={handleClic5x5}>5x5</Button>
+                  <Button  variant="secondary" onClick={handleClic6x6}>6x6</Button>
+               </ButtonGroup>
+             
+             </Row>
+                 <br/>
+             <Row md= "2" className="justify-content-md-center">
+                <ButtonGroup>
+                  <Button  variant="secondary"  onClick={handleImage} >Animaux</Button>
+                  <Button  variant="secondary" onClick={handleImageLettre}>Lettre</Button>
+                  <Button  variant="secondary">Couleur</Button>
+               </ButtonGroup>
+             </Row>
+		           <Row md= "6" className="justify-content-md-center">
+       <Button as={Col} variant="secondary" onClick={handleRestart}>Restart</Button>
+       </Row>
 		    </div>
 		);//
 }
 //
+
 export default AppMemoire;
 
-
-
-
-const jsonImagi = [{
-	id:1,
-	etat:true,
-	imag:Chat
-},
-{
-	id:2,
-	etat:true,
-	imag:Jaco
-},
-{
-	id:3,
-	etat:true,
-	imag:Chien
-},
-{
-	id:4,
-	etat:true,
-	imag:Lapin
-}
-,
-{
-	id:5,
-	etat:true,
-	imag:Chien1
-},
-
-{
-	id:6,
-	etat:true,
-	imag:Singe
-},
-{
-	id:7,
-	etat:true,
-	imag:Tigre
-},
-{
-	id:8,
-	etat:true,
-	imag:Ecureuil
-},{
-	id:1,
-	etat:true,
-	imag:Chat
-},
-{
-	id:2,
-	etat:true,
-	imag:Jaco
-},
-{
-	id:3,
-	etat:true,
-	imag:Chien
-},
-{
-	id:4,
-	etat:true,
-	imag:Lapin
-}
-,
-{
-	id:5,
-	etat:true,
-	imag:Chien1
-},
-
-{
-	id:6,
-	etat:true,
-	imag:Singe
-},
-{
-	id:7,
-	etat:true,
-	imag:Tigre
-},
-{
-	id:8,
-	etat:true,
-	imag:Ecureuil
-}
-]

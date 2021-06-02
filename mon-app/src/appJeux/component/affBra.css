@@ -31,6 +31,14 @@
   clear: both;
 }
 
+.hh4{
+	
+	
+		 padding-left: 44%;
+	 padding-right: 30%;
+
+
+}
 
 
 @media screen and (max-width: 990px) {
@@ -41,11 +49,12 @@
 }
  
 }
-.hh4{
-	
-	
-		 padding-left: 44%;
-	 padding-right: 30%;
 
+@media screen and (max-width: 600px) {
 
+ .image{
+	width: 55px;
+	height: 55px;
+}
+ 
 }
