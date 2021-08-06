@@ -48,9 +48,22 @@
           margin-bottom: 70px;
         }
 
+
+        @media screen and (max-width: 990px) {
+          .board {
+            max-width: 400px;  
+            }
+
+          .grid-item {
+             width: 43px;
+             height: 43px;
+             font-size: 25px;
+            }
+      }
+
         @media screen and (max-width: 600px) {
             .board {
-              max-width: 400px;  
+              max-width: 320px;  
               }
 
             .grid-item {

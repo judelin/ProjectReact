@@ -17,7 +17,7 @@ function Carre(props) {
 function TuileComponent(props) {
    return (
       <div className="columnn">
-         <Carre valeur={props.valeur} carre={props.carre} id={props.id} onClick={props.onClick} />
+         <Carre valeur={props.valeur}  id={props.id} onClick={props.onClick} />
       </div>
    );
 
@@ -174,18 +174,17 @@ function AppSudoku() {
       }
    }, [valeur, setNonM, setEtat, etat]);
    return (
-      <div className="roww">
-         
-         <div className="columnn">
-         
-            <div className="wrappper">
+      <div className="row1">
+
+         <div className="colum1">
+           
                <SudokuComponent bool={etatJeu} colo ={colo} valeur={valeur} onClick={handleClick} />
-            </div>
+           
          </div>
          <div className="colum1">
             <FormCh onChange = {handleValue} onClick ={handleRestart}/>
             <div className="wrapp">
-               <TabBoardV n={3} valeur={valeurBoard} carre="carree" onClick={handleClickVal} />
+               <TabBoardV n={3} valeur={valeurBoard} onClick={handleClickVal} />
             </div>
          </div>
       </div>
