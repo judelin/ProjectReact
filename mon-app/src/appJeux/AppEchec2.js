@@ -4,7 +4,7 @@ import TabComponent  from './component/tabComponent';
 import './styles/echec.css';
 import Imagg from './image/imageEchec/roi.png';
 import {Imag,TabInd,ImagT,Imaga} from "./image/Imag";
-import {echange,chercherPosition,verifierCaseSauter,capture,estAp,estAp1,echangeCapture} from './algoEchec/AlgoEchec';
+import {echange,chercherPosition,verifierCaseSauter,capture,estAp,estAp1,echangeCapture} from './algo/AlgoEchec';
 
 
  const images=[Imagg]

@@ -4,12 +4,17 @@ import { Navbar, Nav, NavDropdown, Row, Col, Container} from 'react-bootstrap';
 
 //import Tabl from './component/Tabl';
 import AppT from './component/TablM'
+//import AppT from './appTictato'
 import AppQ from './JeuTaquin';
 import './styles.css';
 
 
 import AppE from './AppEchec2';
 import AppM from './AppMemoire';
+
+import AppSudoku from "./appSudoku";
+import App2048 from "./App2048";
+
 
 export default function BasicExample() {
     return (
@@ -31,7 +36,10 @@ export default function BasicExample() {
         <NavDropdown.Item as={Link} to="/taquin">Taquin</NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item as={Link} to="/echec">Echec</NavDropdown.Item>
-      
+          <NavDropdown.Divider />
+          <NavDropdown.Item as={Link} to="/sudoku">Sudoku</NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item as={Link} to="/2048">2048</NavDropdown.Item>
        
       </NavDropdown>
    
@@ -52,6 +60,12 @@ export default function BasicExample() {
                     </Route>
                     <Route path="/echec">
                         <Echec />
+                    </Route>
+                    <Route path="/sudoku">
+                        <Sudoku />
+                    </Route>
+                    <Route path="/2048">
+                        <App20 />
                     </Route>
                 </Switch>
           
@@ -115,7 +129,7 @@ function Titacto() {
     return (
         <Container>
           
-             <h1>Jeux Titacto</h1>
+             <h1>Jeu Titacto</h1>
            
 
             <div className="wrape">
@@ -128,7 +142,39 @@ function Titacto() {
     );//
 }
 
+function Sudoku() {
+    return (
+        <Container>
+          
+             <h1>Jeu Sudoku</h1>
+           
 
+            <div className="wrape">
+  
+        <AppSudoku/>
+    
+    </div>
+
+        </Container>
+    );//
+}
+
+function App20() {
+    return (
+        <Container>
+          
+             <h1>Jeu 2048</h1>
+           
+
+            <div className="wrape">
+  
+        <App2048 n ={4}/>
+    
+    </div>
+
+        </Container>
+    );//
+}
 /*
       <Row className="justify-content-md-center">
     <Col xs={12} sm={4} md={2}>

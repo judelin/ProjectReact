@@ -6,7 +6,7 @@ import './affBra.css';
 function ImageDet(props){
 		return(
 	    <div className="column">
-	       <img src={props.src} className="image" id={props.id} lig={props.lig} onClick={props.onClick} />
+	       <img src={props.src} className="image" id={props.id} lig={props.lig} onClick={props.onClick} alt="jeu"/>
 
 	    </div>
 	)//
@@ -29,7 +29,7 @@ export function ImageComposant(props){
 function ImageComponent(props){
   return(
   <div  onClick={props.onClick}>
-      <img src={props.src} className="image"/>
+      <img src={props.src} className="image" alt="imge"/>
   </div>
   )//
 }

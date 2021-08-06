@@ -3,7 +3,7 @@ import { useMachine } from "@xstate/react";
 import { Row, Col, Container, Button } from 'react-bootstrap';
 import { jeuMachine } from "../jeuMachine/jeuMachine";
 
-import Carre from './Carre';
+import {Carre} from './Carre';
 import '../styles/styles.css';
 
 

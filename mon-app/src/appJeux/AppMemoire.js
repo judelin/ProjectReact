@@ -267,6 +267,7 @@ function AppMemoire(){
     
    // console.log(tab[0])
    },[setEtatt]);
+ 
 	 useEffect(()=>{
   
      if(pair.length === 2 && etat1 && etat2){

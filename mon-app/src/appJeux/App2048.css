@@ -1,0 +1,134 @@
+.column3 {
+   
+    padding: 7px;
+   
+  }
+  
+  /* Clear floats after the columns */
+  .row3 {
+      
+    
+    display: flex;
+     justify-content: center;
+  
+  }
+  
+  .wrap3 {
+    background-color: rgba(47, 34, 34, 1);
+    margin-right: auto; /* 1 */
+    margin-left:  auto; /* 1 */
+    border-radius: 10px;
+    max-width: 500px; /* 2 */
+   
+    
+    margin-top: 20px;
+    padding-right: 10px; /* 3 */
+    padding-left:  10px; /* 3 */
+  
+  }
+  
+  .carre3{
+    width: 106.25px;
+    height: 106.25px;
+     border-radius: 3px;
+    background: rgba(238, 228, 218, 0.35);
+  
+  }
+  
+  .carre1{
+    width: 106.25px;
+    height: 106.25px;
+     border-radius: 3px;
+     background: rgba(255, 255, 255, 0.6);
+  
+  }
+  
+  .item3{
+       text-align: center;
+       padding-top: 30px;
+         font-size: 35px;
+  }
+  .score{
+    font-size: 20px;
+    text-align: center;
+    color: rgba(47, 34, 34, 1);;
+  }
+  .button{
+    width: 120px;
+    height: 50px;
+    color: white;
+    border-radius: 10px;
+    background-color: rgba(47, 34, 34, 1);
+  }
+  
+  @media screen and (max-width: 990px) {
+  
+   .carre3{
+    width: 80px;
+    height: 80px;
+     border-radius: 3px;
+    background: rgba(238, 228, 218, 0.35);
+  }
+   
+  .wrap3 {
+    background-color: rgba(244, 240, 240, 1);
+    margin-right: auto; /* 1 */
+    margin-left:  auto; /* 1 */
+    border-radius: 10px;
+    max-width: 360px; /* 2 */
+   
+    
+    margin-top: 20px;
+    padding-right: 10px; /* 3 */
+    padding-left:  10px; /* 3 */
+  
+  }
+  .column3 {
+     
+    padding: 4px;
+   
+  }
+  .item3{
+       text-align: center;
+       padding-top:20px;
+         font-size: 25px;
+  }
+  
+  }
+  
+  @media screen and (max-width: 600px) {
+  
+   .carre3{
+    width: 55px;
+    height: 55px;
+     border-radius: 3px;
+    background: rgba(238, 228, 218, 0.35);
+  }
+   
+  .wrap3 {
+    background-color: rgba(244, 240, 240, 1);
+    margin-right: auto; /* 1 */
+    margin-left:  auto; /* 1 */
+    border-radius: 10px;
+    max-width: 250px; /* 2 */
+   
+    
+    margin-top: 20px;
+    padding-right: 10px; /* 3 */
+    padding-left:  10px; /* 3 */
+  
+  }
+  .column3 {
+     
+    padding: 2px;
+   
+  }
+  .item3{
+       text-align: center;
+       padding-top: 15px;
+         font-size: 13px;
+  }
+  
+  }
+  
+  

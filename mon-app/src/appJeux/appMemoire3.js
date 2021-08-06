@@ -117,7 +117,7 @@ function AppMemoire3(){
 
   const tabResult = result.slice();
   const tabInd = tabId.slice();
-    const etatt=etat.slice();
+    const etatt = etat.slice();
 
      const handleRestart=()=>{
     setEtat(tf);
