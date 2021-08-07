@@ -78,7 +78,7 @@
   width: 40px;
   height: 40px;
    border-radius: 3px;
-  background: rgba(238, 228, 218, 0.35);
+  background: rgba(8, 8, 8, 0.514);
 }
  
 .wrapp {
@@ -96,13 +96,13 @@
 }
 .columnn {
    
-  padding: 4px;
+  padding: 1px;
  
 }
 .item{
      text-align: center;
-     padding-top:20px;
-    font-size: 25px;
+     padding-top:10px;
+    font-size: 15px;
 }
 
 }
@@ -113,7 +113,7 @@
   width: 30px;
   height: 30px;
    border-radius: 3px;
-  background: rgba(238, 228, 218, 0.35);
+  background: rgba(8, 8, 8, 0.514);
 }
  
 .wrapp {
@@ -136,14 +136,14 @@
 }
 .columnn {
    
-  padding: 2px;
+  padding: 1px;
  
  
 }
 .item{
      text-align: center;
-     padding-top: 15px;
-       font-size: 13px;
+     padding-top: 8px;
+       font-size: 8px;
 }
 
 }
