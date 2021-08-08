@@ -4,7 +4,8 @@ import {
    InitialisationRandom, addTuileRandom, gauche, droite, bas, haut,
    scoreTotal, scoreTotal1, genereCase, detecteMov, nombreDeplacement, compareTab, genereTabNXN, win
 } from './algo/algo2048';
-
+import { Game } from './component/modal';
+import { Row } from 'react-bootstrap';
 function Carre(props) {
    return (
       <div className="carre3" style={{ backgroundColor: props.k }}><h1 className="item3">{props.valeur}</h1></div>
@@ -69,10 +70,12 @@ class App2048 extends Component {
          move: 0,
          over: 0,
          decision: { keyCode: 0, gauche: 0, droite: 0 },
-         mov: 0
+         mov: 0,
+         show:true
       }
       this.handleKeyDown = this.handleKeyDown.bind(this);
       this.handleRestart = this.handleRestart.bind(this);
+      this.handleClose = this.handleClose.bind(this);
 
    }
 
@@ -96,7 +99,7 @@ class App2048 extends Component {
       
       if (event.keyCode === 37) {
      
-         console.log(event.keyCode);
+        // console.log(event.keyCode);
          this.setState({
             valeur: gauche(tab),
             color: "carre1",
@@ -111,7 +114,7 @@ class App2048 extends Component {
 
       }
       else if (event.keyCode === 38) {
-         console.log(event.keyCode);
+        // console.log(event.keyCode);
          this.setState({
             valeur: haut(tab2),
             color: "carre1",
@@ -124,7 +127,7 @@ class App2048 extends Component {
 
       }
       else if (event.keyCode === 39) {
-         console.log(event.keyCode);
+       //  console.log(event.keyCode);
          this.setState({
             valeur: droite(tab1),
             color: "carre1",
@@ -138,7 +141,7 @@ class App2048 extends Component {
 
       }
       else if(event.keyCode === 40)  {
-         console.log(event.keyCode);
+       //  console.log(event.keyCode);
          this.setState({
             valeur: bas(tab3),
             color: "carre1",
@@ -150,10 +153,15 @@ class App2048 extends Component {
          });
 
       } else{
-         console.log("Rien");
+    //     console.log("Rien");
       } 
 
    }
+   handleClose(){
+     this.setState({show: !this.state.show});
+      this.handleRestart();
+   //  alert("salut")
+    }
    update(){
       this.setState({
          valeur: InitialisationRandom(this.state.valeur)
@@ -170,10 +178,10 @@ class App2048 extends Component {
 
    }
    componentDidUpdate(prevProps, prevState, snapshot) {
-      console.log(prevState.valeur);
-      console.log(this.state.valeur);
+     // console.log(prevState.valeur);
+    //  console.log(this.state.valeur);
      // console.log(this.state.decision.keyCode);
-     console.log(compareTab(prevState.valeur, this.state.valeur));
+   //  console.log(compareTab(prevState.valeur, this.state.valeur));
     if(compareTab(prevState.valeur, this.state.valeur) === false){
      this.setState({
       valeur: addTuileRandom(this.state.valeur),
@@ -186,25 +194,23 @@ class App2048 extends Component {
       //console.log(detecteMove(prevState.valeur, this.state.decision.keyCode, this.state.decision.gauche, this.state.decision.droite));
      
     }
+   
    render() {
-     // let tab = this.state.valeur.slice();
-     // console.log(tab)
-      if (genereCase(this.state.valeur).length === 0 && scoreTotal1(this.state.valeur) === 0 && scoreTotal(this.state.valeur) === 0) {
-         alert("Game Over");
-
-      }
-      else if (win(this.state.valeur)) {
-         alert("Winner");
-      } else {}
+     
+      const isWin = win(this.state.valeur) ? <> <Game show={this.state.show} fel="Felicitation" mess="Gagnant(e)" onClick={this.handleClose}/></> :
+      (genereCase(this.state.valeur).length === 0 && scoreTotal1(this.state.valeur) === 0 && scoreTotal(this.state.valeur) === 0)?
+      <> <Game show={this.state.show} fel="" mess="Game Over" onClick={this.handleClose}/></>:<div></div>;
+ 
       return (
          <div>
+            {isWin}
             <div className="score">
                <div className="row3">
                   <div className="column3">
-                     <h1>Move:{this.state.move}</h1>
+                     <h3>Move:{this.state.move}</h3>
                   </div>
                   <div className="column3">
-                     <h1>Score:{this.state.score}</h1>
+                     <h3>Score:{this.state.score}</h3>
                   </div>
                </div>
                <button className="button" onClick={this.handleRestart}>Restart</button>

@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Row, Col, Container} from 'react-bootstrap';
 
 //import Tabl from './component/Tabl';
-import AppT from './component/TablM'
+//import AppT from './component/TablM'
 //import AppT from './appTictato'
+import AppT from "./appTict";
 import AppQ from './JeuTaquin';
 import './styles.css';
 
@@ -78,9 +79,9 @@ export default function BasicExample() {
 
 function Taquin() {
     return (
-        <div>
+        <Container>
            
-                <h1 >Jeux Taquin</h1>
+                <h1 >Jeu Taquin</h1>
             
 
                 <AppQ />
@@ -88,7 +89,7 @@ function Taquin() {
 
            
 
-        </div>
+        </Container>
     );
 }
 
@@ -96,7 +97,7 @@ function Echec() {
     return (
         <Container>
             <Row>
-                <h1 >Jeux Echec</h1>
+                <h1 >Jeu Echec</h1>
             </Row>
             <Row>
 
@@ -113,7 +114,7 @@ function Memoire() {
     return (
         <Container>
            
-                <h1 >Jeux Memoire</h1>
+                <h1 >Jeu Memoire</h1>
            
 
                 <AppM />

@@ -4,7 +4,7 @@ import './AppSudoku.css';
 import {
   genererSudoku, genereCase, isValidSudoku, allDiff
 } from './algo/algoSudoku';
-
+import {Game} from './component/modal';
 import {SudokuComponent, FormCh} from './component/sudokuComponent';
 
 function Carre(props) {
@@ -89,6 +89,7 @@ function AppSudoku() {
    const [idEroor, setIdError] = useState([]);
    const [select, setSelect] = useState(false);
    const [colo, setColo] = useState(genereTabCol());
+   const [show, setShow] = useState(false);
 
    function handleClick(event) {
     
@@ -116,7 +117,7 @@ function AppSudoku() {
       }
       //setEtatJ(isTrue);
       if(isTrue && allDiff(valeur)){
-          alert("Win");
+          setShow(true);
       }
       
       //alert();
@@ -173,9 +174,15 @@ function AppSudoku() {
          setEtat(false);
       }
    }, [valeur, setNonM, setEtat, etat]);
+
+   function  handleClose(){
+      setShow(false);
+      handleRestart();
+    }
+   const isWin = show ? <> <Game show={show} fel="Felicitation" mess="Gagnant(e)" onClick={handleClose}/></> : <div></div>;
    return (
       <div className="row1">
-
+         {isWin}
          <div className="colum1">
            
                <SudokuComponent bool={etatJeu} colo ={colo} valeur={valeur} onClick={handleClick} />

@@ -36,18 +36,16 @@ function TablM(){
   }
  
 return(
-  <div className="row1">
+  <div>
     <div>
 
-     
-      
         <div className="row">
         {Cart(0)}
         {Cart(1)}
         {Cart(2)}
         </div>
 
-        < div className="row">
+        <div className="row">
         {Cart(3)}
         {Cart(4)}
         {Cart(5)}

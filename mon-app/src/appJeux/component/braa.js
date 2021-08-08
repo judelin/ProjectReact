@@ -28,7 +28,7 @@ function brasserMelange(tab,onClickk){
        k++;//
     }
 
-    ligne.push(<div className="row1"  key={k}>{colonne}</div>);
+    ligne.push(<div className="rowww"  key={k}>{colonne}</div>);
   }
   //
    return ligne;

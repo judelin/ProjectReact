@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import MemoireComponent from './component/MemoireComponent';
-
+import { Game } from './component/modal';
 import Couvert from './image/imageMem/couvert.jpg';
 import { Button, Row, Col, ButtonGroup} from 'react-bootstrap';
 import {AfficheComponent, AfficheComponentCouleur, AfficheComponentLettre} from './component/imageComposant';
@@ -71,11 +71,11 @@ function TabBoard(props){
 			const affiche = (props.type === "image") ?
       AfficheComponent(id, etat[id], tab[id].imag, onClick):(props.type === "lettre")?
       AfficheComponentLettre(id, etat[id], col, tab[id].imag, onClick): AfficheComponentCouleur(id, etat[id], tab[id].imag, onClick);
-			colonne.push(<div className="column" key={id}>{affiche}</div>);
+			colonne.push(<div className="columnnn" key={id}>{affiche}</div>);
           id = id+1;
 		}//
 
-		ligne.push(<div key={i} className="row">{colonne}</div>)
+		ligne.push(<div key={i} className="rowww">{colonne}</div>)
 
 	}//
 	return ligne;
@@ -92,6 +92,7 @@ function AppMemoire(){
 	const[etat1, setEtat1] = useState(false);
 	const[etat2, setEtat2] = useState(false);
 	const[longueur, setLongueur] = useState(4)
+  const [show, setShow] = useState(true);//close and open modal
 //	const [imageType, setImageType] = useState("animaux");
   const [type, setType] = useState("image");
 
@@ -103,6 +104,7 @@ function AppMemoire(){
   const etatM = etat.slice();
   const tabI = tabImage.slice();
 	const listPair = pair.slice();
+  
 
 	//console.log(imagi[0].etat)
     //const listPair = pair.slice();
@@ -237,14 +239,14 @@ function AppMemoire(){
           	setId1(i);
           	setEtat1(true);
 
-          	console.log("etat1");
+          //	console.log("etat1");
         }
         else if(pair.length === 1 && etatM[i] === false){ 
              listPair[1] = tabI[i].id;
              etatM[i] = true;
              setId2(i);
              setEtat2(true);
-             console.log("etat2");
+            // console.log("etat2");
              //setPaire(listPair);
          }
          
@@ -259,7 +261,7 @@ function AppMemoire(){
 
  useEffect(()=>{
     if(etatt){
-    	console.log("false")
+    //	console.log("false")
     	setEtatt(false);
       setTimeout(setEtat, 2000, tf);
     
@@ -275,7 +277,7 @@ function AppMemoire(){
      	  setEtat2(false);
        if(pair[0] === pair[1]){
       	  //alert("egal");
-      	 console.log(pair[0]+" "+pair[1]);
+      //console.log(pair[0]+" "+pair[1]);
       	 setPaire([]);
       	 setResult(result + 1);
 
@@ -284,8 +286,8 @@ function AppMemoire(){
       else {
       	if(etat1 && etat2){
       	setTimeout(retourner, 1000, id1, id2, pair);
-      	console.log(pair);
-        console.log("retourner "+pair.length);
+      	//console.log(pair);
+        //console.log("retourner "+pair.length);
       }
       
       }
@@ -293,17 +295,21 @@ function AppMemoire(){
       
   }
   
-   console.log(result);
+   //console.log(result);
 
-    
    },[pair, setPaire]);
 
-    const isWin = result === (tabImage.length/2) ? <Row><h1>Félicitation</h1></Row>:<Row> <h1>Tester votre capacité de memoriser</h1></Row>;
+   function  handleClose(){
+     setShow(false);
+     handleRestart();
+   }
+    const isWin = result === (tabImage.length/2) ? <> <Game show={show} fel="Felicitation" mess="Gagnant(e)" onClick={handleClose}/></>:<Row> <h1>Tester votre capacité de memoriser</h1></Row>;
 
 	return(
 		   <div> 
-		      
+		       
 		         {isWin}
+            
 		       <TabBoard etat={etat} type={type} tab={tabImage}onClick={(i) => handleClic(i)}/>
 		         <br/>
              <Row md= "2" className="justify-content-md-center">
@@ -322,7 +328,8 @@ function AppMemoire(){
                   <Button  variant="secondary" onClick={handleCouleur}>Couleur</Button>
                </ButtonGroup>
              </Row>
-		           <Row md= "6" className="justify-content-md-center">
+             <br/>
+		    <Row md= "6" className="justify-content-md-center">
        <Button as={Col} variant="secondary" onClick={handleRestart}>Restart</Button>
        </Row>
 		    </div>

@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from  'react';
 import { Row, Col, Button, Container } from 'react-bootstrap';
 import TabComponent  from './component/tabComponent';
-import './styles/echec.css';
+//import './styles/echec.css';
 import Imagg from './image/imageEchec/roi.png';
 import {Imag,TabInd,ImagT,Imaga} from "./image/Imag";
 import {echange,chercherPosition,verifierCaseSauter,capture,estAp,estAp1,echangeCapture} from './algo/AlgoEchec';
@@ -72,7 +72,7 @@ function TabComposant({imags,onClick}){
 			k++;
 			kk++;
 		}
-		ligne.push(  <div className="row1" key={i}>{colonne}</div>);
+		ligne.push(  <div className="rowww" key={i}>{colonne}</div>);
 			kk++;//
 	}
 //
@@ -99,7 +99,7 @@ function ComposantEch(props){
 			kk++;
 		}
 
-		ligne.push(<div className="row1" key={i}>{colonne}</div>);
+		ligne.push(<div className="rowww" key={i}>{colonne}</div>);
 			
 			kk++;
 	}
@@ -220,7 +220,7 @@ function AppEchec2(){
               
          const taa=TabComposant({imags:tabImag,onClick:handleClic});
 
-         console.log("tae "+tae.length)
+        // console.log("tae "+tae.length)
 	 	if(taa[TabInd[id][0]].props.children[TabInd[id][1]].props.imagg!==""&&tae.length==1){
 	 		setIdi(chercherPosition(ImagT,taa[TabInd[id][0]].props.children[TabInd[id][1]].props.imagg));
 	 		//console.log(ImagT[5]===taa[TabInd[id][0]].props.children[TabInd[id][1]].props.imagg)

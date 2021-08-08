@@ -29,13 +29,17 @@
 }
 
 /* Clear floats after the columns */
+
+.row{
+  
+}
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.row1 {
+.row2 {
   display: flex;
 }
 

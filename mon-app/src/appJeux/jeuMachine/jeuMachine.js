@@ -74,7 +74,7 @@ return bol.reduce(reducer)===1||bol.reduce(reducer)===2;
     else{
          const isNull = (element) => element ===null;
          const taa=tabAlea(valeur);
-         console.log(taa+ " tab");
+       //  console.log(taa+ " tab");
          melange(taa)
       const i=taa[0]; 
       k={ind:i,ver:false};//Math.floor(Math.random() * Math.floor(valeur.length-1));
@@ -134,7 +134,7 @@ function tabAlea(tab){
    i=calculGagnant(valeur,prob[j]);
    if(i.ver===true){
     bol=true;
-     console.log(j+"kk")
+   //  console.log(j+"kk")
     break;
    }
   
@@ -146,7 +146,7 @@ if(bol===false){
 
    i=calculAdv(valeur,prob[j]);
    if(i.ver===true){
-     console.log(j+"kk")
+    // console.log(j+"kk")
     break;
    }
   
@@ -267,7 +267,7 @@ export const jeuMachine=Machine({
         context.count++;
         context.message="X a gagné  "+context.count+" fois";
     }
-      else if(context.tab[0]==="O" &&calculWinner(valeur)===true){
+      else if(context.tab[0]==="O" && calculWinner(valeur)===true){
        context.countt++;
         context.message="O a gagné  "+context.countt+" fois";
 
@@ -283,7 +283,7 @@ export const jeuMachine=Machine({
       ide[i]=i+1;
 
 //    alert(i)
-    console.log(context.tab)
+   // console.log(context.tab)
       context.valuee=valeur; 
       context.id=ide;
      // console.log(calculWinner(valeur));
