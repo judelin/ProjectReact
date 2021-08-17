@@ -1,5 +1,5 @@
 
-export function calculateWinner(squares) {
+/*export function calculateWinner(squares) {
 
   const lines = tabLines(3); /*[
     [0, 1, 2],
@@ -12,7 +12,7 @@ export function calculateWinner(squares) {
     [2, 4, 6],
   ];*/
  // console.log(tabLines(3));
-  for (let i = 0; i < lines.length; i++) {
+ /* for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return squares[a];
@@ -106,240 +106,364 @@ function scoreV(tabBoard){
   return (calculateWinner(tabBoard) === "O") ? 10 :
   (calculateWinner(tabBoard) === "X") ? -10 : 0;
 
+}*/
+function tabLines(ind){
+  var ligne = [];
+  var k = 0;
+  var l = 0;
+  var c = 0;
+ for(var i = 0; i < 2 * ind + 2; i++){
+   var colonne = [];
+   l = 0;
+   c = 0;
+   if(k <= ind * ind - 1){
+      for(var j = 0; j < ind; j++){
+         colonne.push(k);
+         k = k + 1;
+   }
+ }
+   else if(l <= ind * ind - 1 && i < 2 * ind ){
+         l = i - ind;
+        for(var j = 0; j < ind; j++){
+         colonne.push(l);
+         l = l + ind;
+        
+   }
+  
+ }
+   else if(c <= ind * ind - 1){
+         
+        for(var j = 0; j < ind; j++){
+         
+        if(i === 2 * ind){
+           colonne.push(c);
+           c = ind + 1 + c;
+       }
+       else{
+          colonne.push(c + ind -1);
+         c = ind - 1 + c;
+       }
+   }
+
+  }
+  ligne.push(colonne);
+
+}
+return ligne;
+ 
 }
 
 
-export function bestMoveV(board) {
-  // AI to make its turn
-  let bestScore = -1000;
-  let move;
-  for (let i = 0; i < board.length; i++) {
-    
-      if (board[i] === null) {
+/*export function calculateWinner(squares) {
+
+ var lines = tabLines(3); 
+
+ for (var i = 0; i < lines.length; i++) {
+   var [a, b, c] = lines[i]
+   if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c] ) {
+     return squares[a];
+   }
+ }
+ return null;
+}*/
+
+export function calculateWinner4(squares) {
+  
+  const lines = tabLines(squares.length);
+  // console.log(tabLines(5));
+
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c, d] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c] && squares[a] === squares[d]) {
+      return squares[a];
+    }
+  }
+  return null;
+}
+
+ // var lignes = tabLines(4); 
+export function calculateWinner(squares){
+ var lignes = tabLines(Math.sqrt(squares.length)); 
+
+  var ind = 0;
+  for(var i = 0; i < lignes.length; i++){
+      ind = 0;
+       for(var j = 0; j < lignes[0].length; j++){
+           
+           if(j === 0 && squares[lignes[i][j]] &&  squares[lignes[i][j]] === squares[lignes[i][j+1]]){ind = 1;}
+           else if(j !== 0){
+               if(squares[lignes[i][j-1]]&& squares[lignes[i][j-1]]  === squares[lignes[i][j]]){
+                      ind++;
+                
+                   if(ind === lignes[0].length){
+                       return squares[lignes[i][j]];
+                   }
+               
+                      
+                  
+               }
+           }
+       
+           else{}
+       }
+       if(ind === lignes[0].length){
+           
+           break;
+       }
+    }
+  
+
+      return null;
+
+}
+
+function scoreEv(array){
+   var score = 0;
+   if(calculateWinner(array) === "O"){
+       score = 10;
+   }
+   else if(calculateWinner(array) === "X"){
+       score = -10;
+   }
+   else{}
+   return score; 
+}
+
+function isNoMove(board)
+{
+ for (var i = 0; i < board.length; i++)
+   if (board[i] === "")
+     return true;
+ return false;
+}
+
+
+/*export function minimax(board, depth, isMax){
    
-        board[i] = 'O';
-        let score = minimax(board, 0, false);
-    
-        board[i] = null;
-        if (score > bestScore) {
-      
-          bestScore = score;
-          move = i;
-        }
-      
-    }
-  }
-  return move;
+    var score = scoreEv(board);
+
+   if (score === 10)
+          return score;
+ 
+   if (score === -10)
+         return score;
   
+   if (isNoMove(board) === false)
+        return 0;
+  
+   if (isMax)
+   {
+       var best = -1000;
+ 
+       for(var i = 0; i < board.length; i++)
+       {
+        
+               if (board[i] === "")
+               {
+                 
+                   board[i] = "O";
+ 
+                   best = Math.max(best, minimax(board,
+                                   depth + 1, !isMax));
+ 
+                   board[i] = "";
+               }
+           
+          }
+       
+       return best;
+   }
+ 
+   else
+   {
+       var best = 1000;
+ 
+       for(var i = 0; i < board.length; i++)
+       {
+           
+                if (board[i] === "")
+               {
+                  
+                   board[i] = "X";
+ 
+                   best = Math.min(best, minimax(board,
+                                   depth + 1, !isMax));
+                     
+                   board[i] = "";
+               }
+           }
+       
+       return best;
+   }
 }
 
+export function findBestMove(board)
+{
+ var bestVal = -1000;
+ var bestMoveRow = -1;
+ var bestMoveCol = -1;
+   var ind = [];
 
-export function minimaxV(board, depth, isMaximizing) {
-
-  let result = calculateWinner(board);
- // console.log(result);
-
-  if (result !== null) {
-    return score(board);
-  }
-
-  if (isMaximizing) {
-    let bestScore = -Infinity;
-    for (let i = 0; i < board.length; i++) {
+ for (var i = 0; i < board.length; i++)
+ { 
+       
+   if (board[i] === "")
+     {
+       
+       board[i] = "O";
+      
+       var moveVal = minimax(board, 0, false);
+         
+               board[i] = "";
      
-        // Is the spot available?
-        if (board[i] === null) {
-          board[i] = "O";
-         
-          let score = minimaxV(board, depth + 1, false);
-         
-          board[i] = null;
-          bestScore = Math.max(score, bestScore);
+       if (moveVal > bestVal)
+       {
+                   bestMoveRow = i;
+               
+         bestVal = moveVal;
+       }
+     }
+     
+ }
 
-        }
+
+ return bestMoveRow;
+}
+*/
+
+
+
+export function minimax(board, depth, isMax, alpha, beta){
+    
+  var score = scoreEv(board);
+
+ if (score === 10)
+        return score;
+
+ if (score === -10)
+       return score;
+
+ if (isNoMove(board) === false)
+      return 0;
+
+ if (isMax)
+ {
+     var best = -1000;
+
+     for(var i = 0; i < board.length; i++)
+     {
       
-    }
-    return bestScore;
-  } else {
-    let bestScore = Infinity;
-    for (let i = 0; i < board.length; i++) {
-         // console.log(i)
-        // Is the spot available?
-        if (board[i] === null) {
-          board[i] = "X";
-          let score = minimaxV(board, depth + 1, true);
-       
-          board[i] = null;
-          bestScore = Math.min(score, bestScore);
-        }
+             if (board[i] === "")
+             {
+               
+                 board[i] = "O";
+
+                 var val = minimax(board, depth + 1, !isMax, alpha, beta);
+                 best = Math.max(best, val);
+                 alpha = Math.max(alpha, best);
+                 board[i] = "";
+                 if (beta <= alpha){
+                    break; 
+                       }
+       }
+             }
+         
+        
+     return best;
+ }
+
+ else
+ {
+     var best = 1000;
+
+     for(var i = 0; i < board.length; i++)
+     {
+         
+              if (board[i] === "")
+             {
+                
+                 board[i] = "X";
+
+                  var val = minimax(board, depth + 1, !isMax, alpha, beta);
+                 best = Math.min(best, val);
+                 beta = Math.min(beta, best);
+                 board[i] = "";
+                 if (beta <= alpha){
+               break; 
+          
+       }
+             }
+         }
       
-    }
-    return bestScore;
-  }
+     return best;
+ }
 }
 
+export function findBestMove(board)
+{
+var bestVal = -1000;
+var bestMoveRow = -1;
+var bestMoveCol = -1;
+ var ind = [];
 
-
-export function minimax(node, depth, isMaximizing) {
-
-  let result = calculateWinner(node);
- // console.log(result);
-
-  if (result !== null) {
-    return score(node);
-  }
-
-
-
-  if(isMaximizing){
-     let  bestScore = -10000;
-
-      for(var i = 0; i < node.length; i++){
-
-        if(node[i] === null){
-          node[i] = "O"
-          let score = minimax(node, depth + 1, false);
-          node[i] = null;
-
-          bestScore = Math.max(score, bestScore);
-            //   console.log(bestScore);
-
-        }
-
-      }
-      return bestScore;
-  }
-  else{
-
-      let bestScore = 10000;
-
-      for(var i = 0; i < node.length; i++){
-
-        if(node[i] === null){
-          node[i] = "X"
-          let score = minimax(node, depth + 1, true);
-          node[i] = null;
-
-          bestScore = Math.min(score, bestScore);
-
-        }
-
-      }
-      return bestScore;
-  }
-}
-
-export function minimaxAl(node, depth, player){
-  let result = calculateWinner(node);
-  if (result !== null) {
-    return score(node);
-  }
-
-  let scores = [];
-  let moves = [];
-  
-    for(var i = 0; i < node.length; i++){
-      let score_move = {}
-      if(player){
-         if(node[i] === null){
-         node[i] = "O";
-         let score = minimaxAl(node, depth + 1, false);
-         node[i] = null;
-         score_move.score = {score: score, move: i}
-         scores.push(score_move);
-        // moves.push(i)
-       
+for (var i = 0; i < board.length; i++)
+{ 
+  if (board[i] === "")
+   {
+       board[i] = "O";
+     
+     var moveVal = minimax(board, 0, false, -1000, 1000);
+           
+             board[i] = "";
+          
+     if (moveVal > bestVal)
+     { 					
+                 bestMoveRow = i;
+                // bestMoveCol = j;
+       bestVal = moveVal;
      }
    }
-  else{
-         if(node[i] === null){
-         node[i] = "X";
-         let score = minimaxAl(node, depth + 1, true);
-         node[i] = null;
-         score_move.score = {score: score, move: i}
-         scores.push(score_move);
-        // moves.push(i)
-         
-    }
-  }
+   
+}
 
-  }
- 
- var bestMove;
-if (player === false) {
-        // If the player is aiPlayer, it sets a variable called bestScore to a very low number and loops through the moves array, 
-        var bestScore = -10000;
-        for (var i = 0; i <scores.length; i++) {
-            // if a move has a higher score than bestScore, the algorithm stores that move
-            if (scores[i].score.score > bestScore) {
-                bestScore = scores[i].score.score;
-                 //console.log(bestScore);
-                bestMove = scores[i].score.move; // In case there are moves with similar score, only the first one will be stored.
-            }
-        }
-    } else {
-        var bestScore = 10000;
-        for (var i = 0; i < scores.length; i++) {
-            if (scores[i].score.score < bestScore) {
-                bestScore = scores[i].score.score;
-                //console.log(bestScore);
-                bestMove = scores[i].score.move;
-            }
-        }
-    }
-
-return bestMove;
-
+return bestMoveRow;
 }
 
 
 
-export function bestMov(squares){
-  var scores = minimaxAl(squares, 0, false);
-  let bestMov = 0;
- // console.log(scores.length);
- /* let  bestMov = 0;
-  let countM = 0;
-  let countM1 = 0;
-   for(var i = 0; i < scores.length; i++){
-    //  console.log(Array.isArray(scores[i].score.score))
-   if(Array.isArray(scores[i].score.score)){
-     // bestMov = scores[i].score.move;
-    //  console.log(scores[i].score.move);
-    countM = countM + 1;
-   }
-   else{
-       // bestMov = scores[i].score.move;
-        console.log(Number.isInteger(scores[i].score.score))
-        countM1 = countM1 + 1;
-        console.log(countM1);
-   }
-    
-   if(countM - countM1 === countM){
-        bestMov = scores[i].score.move;
-   }
-   else{
-       bestMov = scores[i].score.move;
-   }
-
-   }*/
-
-    for(var i = 0; i < scores.length; i++){
-      if(Number.isInteger(scores[i].score.score)){
-        bestMov = scores[i].score.move;
-        break;
-      }else{
-        bestMov = scores[i].score.move;
+export function differentZero(array, numb){
+  var ind = 0;
+  for(var i = 0; i < array.length; i++){
+      if(array[i] !== ""){
+          ind++;
       }
-    }
-
-
-
-
-   return bestMov;
+      if(ind === numb){
+          break;
+      }
+  
+  }
+  return ind;
 }
 
+function melange(tab){
+  var a=0;
+  var t;
+  for(var i=tab.length-1; i>=0; i--){
+    a=Math.floor(Math.random() * Math.floor(tab.length));
+    t=tab[a];
+    tab[a]=tab[i];
+    tab[i]=t;
+  
+  }
+  return tab;
+}
 
-
-
-/****************************************************************************************************************************************************/
+export function numbRandom(array){
+  var tab = [];
+  for(var i = 0; i < array.length; i++){
+      if(array[i] === ""){
+          tab.push(i);
+      }
+  }
+  return melange(tab);
+}

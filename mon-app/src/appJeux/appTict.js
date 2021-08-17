@@ -2,24 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useMachine } from "@xstate/react";
 import { Row, Col, Container, Button } from 'react-bootstrap';
 import { jeuMachine } from "./jeuMachine/jeuMachine";
+import { CarreComponent } from './component/tictactoComponent';
 
 import './AppTict.css';
 
-function Carre(props) {
-   return (
-      <div className="carree" id={props.id} onClick={props.onClick}><h1 id={props.id} className="item">{props.valeur}</h1></div>
 
-   );
-}//
-
-function CarreComponent(props) {
-   return (
-      <div className="columnnn">
-         <Carre valeur={props.valeur} carre={props.carre} id={props.id} onClick={props.onClick} />
-      </div>
-   );
-
-}
 
 function TabBoardV(props) {
   
@@ -128,3 +115,21 @@ return(
               </div>
 			);
             */
+
+
+
+         /*function Carre(props) {
+   return (
+      <div className="carree" id={props.id} onClick={props.onClick}><h1 id={props.id} className="item">{props.valeur}</h1></div>
+
+   );
+}//
+
+function CarreComponent(props) {
+   return (
+      <div className="columnnn">
+         <Carre valeur={props.valeur} carre={props.carre} id={props.id} onClick={props.onClick} />
+      </div>
+   );
+
+}*/

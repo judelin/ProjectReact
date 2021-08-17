@@ -4,8 +4,8 @@ import { Navbar, Nav, NavDropdown, Row, Col, Container} from 'react-bootstrap';
 
 //import Tabl from './component/Tabl';
 //import AppT from './component/TablM'
-//import AppT from './appTictato'
-import AppT from "./appTict";
+import AppT from './appTictato'
+//import AppT from "./appTict";
 import AppQ from './JeuTaquin';
 import './styles.css';
 
