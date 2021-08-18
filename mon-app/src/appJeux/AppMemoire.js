@@ -280,8 +280,6 @@ function AppMemoire(){
       //console.log(pair[0]+" "+pair[1]);
       	 setPaire([]);
       	 setResult(result + 1);
-
-
       }
       else {
       	if(etat1 && etat2){
@@ -303,6 +301,7 @@ function AppMemoire(){
      setShow(false);
      handleRestart();
    }
+   
     const isWin = result === (tabImage.length/2) ? <> <Game show={show} fel="Felicitation" mess="Gagnant(e)" onClick={handleClose}/></>:<Row> <h1>Tester votre capacité de memoriser</h1></Row>;
 
 	return(

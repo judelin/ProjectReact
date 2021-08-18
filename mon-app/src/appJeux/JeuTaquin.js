@@ -286,7 +286,7 @@ function JeuTaquin() {
   const [idi, setIdi] = React.useState(0);
   const [numeroAfficher, setNumeroAfficher] = React.useState(false);
   const [isRes, setIsRe] = React.useState(false);
-  const [show, setShow] = React.useState(true);//close and open modal
+  const [show, setShow] = React.useState(false);//close and open modal
 
   const [ind, setInd] = React.useState(1);
   const [ide, setIde] = React.useState(0);
